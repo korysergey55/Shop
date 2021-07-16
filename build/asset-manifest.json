@@ -1,0 +1,38 @@
+{
+  "files": {
+    "static/js/0.8e59b689.chunk.js": "/shop/static/js/0.8e59b689.chunk.js",
+    "static/js/0.8e59b689.chunk.js.map": "/shop/static/js/0.8e59b689.chunk.js.map",
+    "main.css": "/shop/static/css/main.83caedcb.chunk.css",
+    "main.js": "/shop/static/js/main.40dd2aab.chunk.js",
+    "main.js.map": "/shop/static/js/main.40dd2aab.chunk.js.map",
+    "runtime-main.js": "/shop/static/js/runtime-main.4dca272f.js",
+    "runtime-main.js.map": "/shop/static/js/runtime-main.4dca272f.js.map",
+    "static/js/3.9de9448c.chunk.js": "/shop/static/js/3.9de9448c.chunk.js",
+    "static/js/3.9de9448c.chunk.js.map": "/shop/static/js/3.9de9448c.chunk.js.map",
+    "static/js/4.d4169104.chunk.js": "/shop/static/js/4.d4169104.chunk.js",
+    "static/js/4.d4169104.chunk.js.map": "/shop/static/js/4.d4169104.chunk.js.map",
+    "static/js/5.e9954d52.chunk.js": "/shop/static/js/5.e9954d52.chunk.js",
+    "static/js/5.e9954d52.chunk.js.map": "/shop/static/js/5.e9954d52.chunk.js.map",
+    "static/js/6.286ef94a.chunk.js": "/shop/static/js/6.286ef94a.chunk.js",
+    "static/js/6.286ef94a.chunk.js.map": "/shop/static/js/6.286ef94a.chunk.js.map",
+    "static/js/7.660477ce.chunk.js": "/shop/static/js/7.660477ce.chunk.js",
+    "static/js/7.660477ce.chunk.js.map": "/shop/static/js/7.660477ce.chunk.js.map",
+    "static/js/8.f6afd41c.chunk.js": "/shop/static/js/8.f6afd41c.chunk.js",
+    "static/js/8.f6afd41c.chunk.js.map": "/shop/static/js/8.f6afd41c.chunk.js.map",
+    "static/js/9.95442f32.chunk.js": "/shop/static/js/9.95442f32.chunk.js",
+    "static/js/9.95442f32.chunk.js.map": "/shop/static/js/9.95442f32.chunk.js.map",
+    "static/js/10.dd107c70.chunk.js": "/shop/static/js/10.dd107c70.chunk.js",
+    "static/js/10.dd107c70.chunk.js.map": "/shop/static/js/10.dd107c70.chunk.js.map",
+    "index.html": "/shop/index.html",
+    "static/css/main.83caedcb.chunk.css.map": "/shop/static/css/main.83caedcb.chunk.css.map",
+    "static/js/3.9de9448c.chunk.js.LICENSE.txt": "/shop/static/js/3.9de9448c.chunk.js.LICENSE.txt",
+    "static/media/products.f92a08ea.svg": "/shop/static/media/products.f92a08ea.svg",
+    "static/media/symbol-defs.c7b3efa0.svg": "/shop/static/media/symbol-defs.c7b3efa0.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.4dca272f.js",
+    "static/js/3.9de9448c.chunk.js",
+    "static/css/main.83caedcb.chunk.css",
+    "static/js/main.40dd2aab.chunk.js"
+  ]
+}
