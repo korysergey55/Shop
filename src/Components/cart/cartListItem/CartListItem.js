@@ -1,20 +1,22 @@
 import React from "react";
-import { CartListItemContainer } from "./CartListItemStyled";
+import styles from "./CartListItemStyled.module.css"
 import sprite from "../../../icons/products/products.svg";
 
 const CartListItem = ({ product, removeFromCart }) => {
-  const { name, price, id } = product;
+
+  const { name, price, id, image } = product;
   const remove = () => removeFromCart(id);
   return (
-    <CartListItemContainer>
-      <p className='cartItemName'>{name}</p>
-      <p className='cartPrice'>{price}</p>
-      <div className='iconContainer' onClick={remove}>
-        <svg className='iconBin'>
-          <use href={sprite + "#icon-bin"} />
-        </svg>
-      </div>
-    </CartListItemContainer>
+   <li li className={styles.CartListItemContainer}>
+    <p className={styles.cartItemName}>{name}</p>
+    <img src={image} alt={name} className={styles.cartItemNameImage} />
+    <p className={styles.cartPrice}>{price} грн</p>
+    <div className={styles.iconContainer} onClick={remove}>
+     <svg className={styles.iconBin}>
+      <use href={sprite + "#icon-bin"} />
+     </svg>
+    </div>
+   </li>
   );
 };
 

@@ -1,38 +1,38 @@
 import { createReducer, combineReducers } from "@reduxjs/toolkit";
 import {
-  resetError,
-  setError,
-  setLaptops,
-  setLoader,
-  setPhones,
+ resetError,
+ setError,
+ setLaptops,
+ setLoader,
+ setPhones,
 } from "./productsActions";
 
 const productItemsReducer = createReducer(
-  { phones: [], laptops: [] },
-  {
-    [setPhones]: (state, action) => ({
-      ...state,
-      phones: [...action.payload],
-    }),
-    [setLaptops]: (state, action) => ({
-      ...state,
-      laptops: [...action.payload],
-    }),
-  }
+ { phones: [], laptops: [] },
+ {
+  [setPhones]: (state, action) => ({
+   ...state,
+   phones: [...action.payload],
+  }),
+  [setLaptops]: (state, action) => ({
+   ...state,
+   laptops: [...action.payload],
+  }),
+ }
 );
 const productsLoaderReducer = createReducer(false, {
-  [setLoader]: (state) => !state,
+ [setLoader]: (state) => !state,
 });
 
 const productsErrorReducer = createReducer("", {
-  [setError]: (_, action) => action.payload,
-  [resetError]: () => "",
+ [setError]: (_, action) => action.payload,
+ [resetError]: () => "",
 });
 
 const productsReducer = combineReducers({
-  items: productItemsReducer,
-  loader: productsLoaderReducer,
-  error: productsErrorReducer,
+ items: productItemsReducer,
+ loader: productsLoaderReducer,
+ error: productsErrorReducer,
 });
 
 export default productsReducer;

@@ -1,55 +1,52 @@
 import axios from "axios";
-import  { setLoader } from '../redux/products/productsActions'
-import store from '../redux/store'
-const baseURL = "https://reactmaps-1556023014107-default-rtdb.firebaseio.com/";
 
-export const createNewAdv = async (category, newAdv) => {
-  try {
-    const response = await axios.post(
-      baseURL + `advertisements/${category}.json`,
-      newAdv
-    );
-    return response;
-  } catch (error) {
-    console.log(error);
-  }
-};
-export const getProductByID = async (category, id) => {
-  console.log("id :>> ", id);
-  try {
-    const response = await axios.get(
-      baseURL + `advertisements/${category}/${id}.json`
-    );
-    return response.data;
-  } catch (error) {
-    console.log(error);
-  }
+// const baseURL = "https://react-shop-5c360-default-rtdb.firebaseio.com/"; //korysergey55@gmail.com
+const baseURL = "https://criptoshop-62529-default-rtdb.firebaseio.com/"; //korysergeyDev@gmail.com
+
+export const getAllAdvByCategoryApi = async (category) => {
+ try {
+  const response = await axios.get(baseURL + `advertisements/${category}.json`);
+  return response.data;
+ } catch (error) {
+  console.log(error);
+ }
 };
 
-export const deleteAdv = async (category, id) => {
-  try {
-    await axios.delete(baseURL + `advertisements/${category}/${id}.json`);
-  } catch (error) {
-    console.log(error);
-  }
+export const createNewAdvApi = async (category, newAdv) => {
+ try {
+  const response = await axios.post(
+   baseURL + `advertisements/${category}.json`,
+   newAdv
+  );
+  return response;
+ } catch (error) {
+  console.log(error);
+ }
 };
 
-export const createNewOrder = async (order) => {
-  try {
-    await axios.post(baseURL + "orders.json", order);
-  } catch (error) {
-    console.log(error);
-  }
+export const deleteAdvApi = async (category, id) => {
+ try {
+  await axios.delete(baseURL + `advertisements/${category}/${id}.json`);
+ } catch (error) {
+  console.log(error);
+ }
 };
 
-export const getAllAdvByCategory = async (category) => {
-  try {
-    const response = await axios.get(
-      baseURL + `advertisements/${category}.json`
-    );
-    return response.data;
-  } catch (error) {
-    console.log(error);
-  }
-  
+export const getProductByIDApi = async (category, id) => {
+ try {
+  const response = await axios.get(
+   baseURL + `advertisements/${category}/${id}.json`
+  );
+  return response.data;
+ } catch (error) {
+  console.log(error);
+ }
+};
+
+export const createNewOrderApi = async (order) => {
+ try {
+  await axios.post(baseURL + "orders.json", order);
+ } catch (error) {
+  console.log(error);
+ }
 };

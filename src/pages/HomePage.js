@@ -1,6 +1,17 @@
 import React from "react";
+import styles from './pagesStyled/HomePageStyled.module.css'
+import LaptopList from "../Components/laptopList/LaptopList";
+import PhoneList from "../Components/phoneList/PhoneList";
+import Filter from "../Components/filter/Filter";
 const HomePage = () => {
-  return <h2>HomePage</h2>;
+ return (
+  <>
+   <h2 className={styles.homePageTitle}>My Asic shop</h2>
+   <Filter />
+   <PhoneList />
+   <LaptopList />
+  </>
+ );
 };
 
 export default HomePage;

@@ -5,9 +5,10 @@ import { ProductsPageContainer } from "./ProductsPageStyled";
 import Section from "../Components/section/Section";
 
 const ProductsPage = ({ match, data, history }) => {
- useEffect(() => {
-  history.push(match.path + "/phones");
- }, []);
+
+//  useEffect(() => {
+//   history.push(match.path + "/phones");
+//  }, []);
 
  return (
   <ProductsPageContainer>
