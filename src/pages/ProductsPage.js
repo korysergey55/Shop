@@ -1,51 +1,54 @@
 import React, { Suspense, useEffect } from "react";
+import styles from "./pagesStyled/ProductsPageStyled.module.css";
+
 import { productsRoutes } from "../routes/productsRoutes";
-import { NavLink, Route, Switch } from "react-router-dom";
-import { ProductsPageContainer } from "./ProductsPageStyled";
-import Section from "../Components/section/Section";
+import { NavLink, Route, Switch, useHistory, useRouteMatch } from "react-router-dom";
 
-const ProductsPage = ({ match, data, history }) => {
+const ProductsPage = () => {
 
-//  useEffect(() => {
-//   history.push(match.path + "/phones");
-//  }, []);
+ const history = useHistory();
+ const match = useRouteMatch();
+
+ useEffect(() => {
+  history.push(match.path + "/phones");
+ }, [history]);
 
  return (
-  <ProductsPageContainer>
-   <ul className="navigationList">
+  <div className={styles.ProductsPageContainer}>
+   <ul className={styles.navigationList}>
     {productsRoutes.map(
      (route) =>
       route.isLink && (
-       <li className="navigationListItem" key={route.path}>
+       <li className={styles.navigationListItem} key={route.path}>
         <NavLink
          to={match.url + route.path}
          exact={route.exact}
-         className="navigationListItemAnchor"
-         activeClassName="navigationListItemActive"
+         icon={route.icon}
+         className={styles.navigationListItemAnchor}
+         activeClassName={styles.navigationListItemActive}
         >
+         {route.icon}
          {route.name}
         </NavLink>
        </li>
       )
     )}
    </ul>
+
    <Suspense fallback={<h2>...loading</h2>}>
     <Switch>
-     {productsRoutes.map(({ name, path, exact, component: MyComponent }) => (
+     {productsRoutes.map(({ name, path, exact, component }) => (
       <Route
+       name={name}
        key={path}
        path={match.path + path}
        exact={exact}
-       render={() => (
-        <Section title={name}>
-         <MyComponent {...data} />
-        </Section>
-       )}
+       component={component}
       />
      ))}
     </Switch>
    </Suspense>
-  </ProductsPageContainer>
+  </div>
  );
 };
 

@@ -1,5 +1,11 @@
-import { getAllAdvByCategoryApi } from "../../services/api";
-import { setLaptops, setLoader, setPhones } from "./productsActions";
+import { getAllAdvByCategoryApi, getProductByIDApi } from "../../services/api";
+import {
+ setLaptops,
+ setPhones,
+ setProductWithId,
+ setError,
+ setLoader,
+} from "./productsActions";
 
 export const getAllAdvByCategoryApiOperation =
  (category) => async (dispatch) => {
@@ -24,3 +30,14 @@ export const getAllAdvByCategoryApiOperation =
    dispatch(setLoader());
   }
  };
+
+export const getProductByIdOperation = (category, id) => async (dispatch) => {
+ 
+    try {
+  const response = await getProductByIDApi(category, id);
+  dispatch(setProductWithId(response));
+ }
+  catch (error) {
+  dispatch(setError());
+ }
+};

@@ -13,9 +13,9 @@ import {
 } from "./authActions";
 
 export const registrationUserOperation =
- (formState, history) => async (dispatch) => {
+ (InputFormState, history) => async (dispatch) => {
   try {
-   const response = await registrationUserApi(formState);
+   const response = await registrationUserApi(InputFormState);
    dispatch(registerUserAction(response));
    alert("You was secsesful Registrated. Login please");
    history.push("/login");
@@ -24,11 +24,11 @@ export const registrationUserOperation =
   }
  };
 
-export const loginUserOperation = (formState, history) => async (dispatch) => {
+export const loginUserOperation = (InputFormState, history) => async (dispatch) => {
  try {
-  const response = await loginUserApi(formState);
+  const response = await loginUserApi(InputFormState);
   dispatch(loginUserAction(response.data));
-  history.push("/formAdd");
+  history.push("/");
  } catch (error) {
   dispatch(loginUserActionError(error));
  }

@@ -1,23 +1,46 @@
 import React from "react";
 import { ListItemContainer } from "./PhoneListItemStyled";
-import { withRouter } from "react-router-dom";
 
-const PhoneListItem = ({ phone, addToCart, history, match, location }) => {
+import { useDispatch } from "react-redux";
+import {
+    useHistory,
+    useLocation,
+    useRouteMatch,
+    withRouter,
+} from "react-router-dom";
+import { addToCart } from "../../../redux/cart/cartActions";
+import addToCartOperation from "../../../redux/cart/cartOperations";
+
+
+const PhoneListItem = ({ phone }) => {
+
+ const dispatch = useDispatch();
+ const history = useHistory();
+ const location = useLocation();
+ const match = useRouteMatch();
+
  const addProduct = () => {
-  addToCart(phone);
+  dispatch(addToCart(phone));
  };
+
  const openDetails = () => {
   history.push({
    pathname: `${match.path}/${phone.id}`,
    state: { from: location.pathname },
   });
  };
+
  return (
   <ListItemContainer>
    <div className="content">
     <h3 className="listItemTitle">{phone.name}</h3>
     <div className="imageWrapper">
-     <img src={phone.image} alt={phone.name} className="listItemImage" />
+     <img
+      src={phone.image}
+      alt={phone.name}
+      className="listItemImage"
+      onClick={openDetails}
+     />
     </div>
 
     <p className="priceTitle">

@@ -1,25 +1,56 @@
 import { lazy } from "react";
+import AirPodsIcon from "../Components/productIcons/AirPodsIcon";
+import AppleWatchIcon from "../Components/productIcons/AppleWatchIcon";
+import IpadIcon from "../Components/productIcons/IpadIcon";
+import IphoneIcon from "../Components/productIcons/IphoneIcon";
+import MacIcon from "../Components/productIcons/MacIcon";
 
 export const productsRoutes = [
-  {
-    name: "ProductDetails",
-    path: "/:category/:productID",
-    component: lazy(() => import("../pages/ProductItemDetails")),
-    exact: false,
-    isLink: false,
-  },
-  {
-    name: "Phones",
-    path: "/phones",
-    component: lazy(() => import("../Components/phoneList/PhoneList")),
-    exact: true,
-    isLink: true,
-  },
-  {
-    name: "Laptops",
-    path: "/laptops",
-    component: lazy(() => import("../Components/laptopList/LaptopList")),
-    exact: true,
-    isLink: true,
-  },
+ {
+  name: "ProductDetails",
+  path: "/:category/:productID",
+  component: lazy(() => import("../pages/ProductItemDetails")),
+  exact: false,
+  isLink: false,
+ },
+ {
+  name: "iPhones",
+  path: "/phones",
+  component: lazy(() => import("../Components/phoneList/PhoneList")),
+  exact: true,
+  isLink: true,
+  icon: <IphoneIcon />,
+ },
+ {
+  name: "Mac",
+  path: "/laptops",
+  component: lazy(() => import("../Components/laptopList/LaptopList")),
+  exact: true,
+  isLink: true,
+  icon: <MacIcon />,
+ },
+ {
+  name: "iPad",
+  path: "/ipad",
+  component: "iPad",
+  exact: true,
+  isLink: true,
+  icon: <IpadIcon />,
+ },
+ {
+  name: "AppleWatch",
+  path: "/watch",
+  component: "AppleWatch",
+  exact: true,
+  isLink: true,
+  icon: <AppleWatchIcon />,
+ },
+ {
+  name: "AirPods",
+  path: "/pods",
+  component: "AirPods",
+  exact: true,
+  isLink: true,
+  icon: <AirPodsIcon />,
+ },
 ];

@@ -1,48 +1,39 @@
-import React, { Component } from "react";
+import React from "react";
 import { PhoneListContainer } from "./PhoneListStyled";
 import PhoneListItem from "./phoneListItem/PhoneListItem";
 import { getAllAdvByCategoryApi } from "../../services/api";
 
-import { connect } from "react-redux";
-import { setPhones } from "../../redux/products/productsActions";
-import { addToCart } from "../../redux/cart/cartActions";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
 
-class PhoneList extends Component {
- componentDidMount() {
-  this.getPhones();
- }
- getPhones = async () => {
+import { setPhones } from "../../redux/products/productsActions";
+import { getPhonesSelector } from "../../redux/products/productsSelectors";
+
+const PhoneList = () => {
+ const dispatch = useDispatch();
+ const phones = useSelector(getPhonesSelector);
+ useEffect(() => {
+  dispatch(getPhones);
+ }, [dispatch]);
+
+ const getPhones = async () => {
   const response = await getAllAdvByCategoryApi("phones");
 
   if (response) {
-   const phones = Object.keys(response).map((key) => ({
+   const phonesList = Object.keys(response).map((key) => ({
     id: key,
     ...response[key],
    }));
-   this.props.setPhones(phones);
+   dispatch(setPhones(phonesList));
   }
  };
- render() {
-  return (
-   <PhoneListContainer>
-    {this.props.phones.map((phone) => (
-     <PhoneListItem
-      phone={phone}
-      key={phone.id}
-      addToCart={this.props.addToCart}
-     />
-    ))}
-   </PhoneListContainer>
-  );
- }
-}
 
-const mapStateToProps = (state) => {
- return {
-  phones: state.products.items.phones,
- };
+ return (
+  <PhoneListContainer>
+   {phones?.map((phone) => (
+    <PhoneListItem phone={phone} key={phone.id} />
+   ))}
+  </PhoneListContainer>
+ );
 };
-
-const mapDispatchToProps = { addToCart, setPhones };
-
-export default connect(mapStateToProps, mapDispatchToProps)(PhoneList);
+export default PhoneList;

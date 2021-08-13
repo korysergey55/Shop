@@ -1,54 +1,79 @@
-import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
-import { getProductByIDApi } from "../services/api";
-import { ProductDetailsContainer } from "./ProductItemDetailsStyled";
+import React, { useEffect } from "react";
+import { ProductDetailsContainer } from "./pagesStyled/ProductItemDetailsStyled";
 
-class ProductItemDetails extends Component {
- state = { laptop: null };
- async componentDidMount() {
-  const res = await getProductByIDApi(
-   this.props.match.params.category,
-   this.props.match.params.productID
+import {
+ useHistory,
+ useLocation,
+ useRouteMatch,
+ withRouter,
+} from "react-router-dom";
+import { getProductWithIdSelector } from "../redux/products/productsSelectors";
+import { useDispatch, useSelector } from "react-redux";
+import { getProductByIdOperation } from "../redux/products/productsOperations";
+import { addToCart } from "../redux/cart/cartActions";
+
+const ProductItemDetails = () => {
+ const history = useHistory();
+ const location = useLocation();
+ const match = useRouteMatch();
+ const dispatch = useDispatch();
+ const productById = useSelector(getProductWithIdSelector);
+
+ useEffect(() => {
+  dispatch(
+   getProductByIdOperation(match.params.category, match.params.productID)
   );
-  this.setState({ laptop: res });
- }
+ }, [dispatch]);
 
- goBack = () => {
-  if (this.props.location.state) {
-   this.props.history.push(this.props.location.state.from);
-  } else
-   this.props.history.push(`/products/${this.props.match.params.category}`);
+ const goBack = () => {
+  if (location.state) {
+   history.push(location.state.from);
+  } else history.push(`/products/${match.params.category}`);
  };
- render() {
-  const { laptop } = this.state;
-  return (
-   <ProductDetailsContainer>
-    <button className="goBack" onClick={this.goBack}>
-     Go back
-    </button>
-    {laptop && (
-     <div className="content">
-      <h3 className="listItemTitle">{laptop.name}</h3>
-      <div className="imageWrapper">
-       <img src={laptop.image} alt={laptop.name} className="listItemImage" />
-      </div>
-      <p className="description">{laptop.description}</p>
-      <p className="priceTitle">
-       {laptop.isSale ? (
-        <>
-         <span className="withSalePrice">{laptop.price - 1000}</span>{" "}
-         <span className="withoutSalePrice">{laptop.price}</span>
-        </>
-       ) : (
-        <span className="withoutSalePrice">{laptop.price}</span>
-       )}
-       {" грн"}
-      </p>
+
+ return (
+  <ProductDetailsContainer>
+   <button className="goBack" onClick={goBack}>
+    Go back
+   </button>
+
+   {productById && (
+    <div className="content">
+     <h3 className="listItemTitle">{productById.name}</h3>
+     <div className="imageWrapper">
+      <img
+       src={productById.image}
+       alt={productById.name}
+       className="listItemImage"
+      />
      </div>
-    )}
-   </ProductDetailsContainer>
-  );
- }
-}
+     <p className="description">{productById.description}</p>
+     <p className="priceTitle">
+      {productById.isSale ? (
+       <>
+        <span className="withSalePrice">{productById.price - 1000}</span>{" "}
+        <span className="withoutSalePrice">{productById.price}</span>
+       </>
+      ) : (
+       <span className="withoutSalePrice">{productById.price}</span>
+      )}
+      {" грн"}
+     </p>
+     <div className="options">
+      <button
+       onClick={() => dispatch(addToCart(productById))}
+       className="addToCartButton"
+      >
+       Add to cart
+      </button>
+      <button onClick={""} className="bayNow">
+       Bay Now
+      </button>
+     </div>
+    </div>
+   )}
+  </ProductDetailsContainer>
+ );
+};
 
 export default withRouter(ProductItemDetails);

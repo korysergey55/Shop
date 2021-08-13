@@ -125,7 +125,7 @@ class AuthForm extends Component {
          onChange={this.onHandleChange}
          checked={this.state.gender === "male"}
         />
-        Мужчина
+         Мужчина
        </label>
        <label className={styles.labelName}>
         <input
@@ -136,7 +136,7 @@ class AuthForm extends Component {
          onChange={this.onHandleChange}
          checked={this.state.gender === "female"}
         />
-        Женщина
+         Женщина
        </label>
       </div>
       <select

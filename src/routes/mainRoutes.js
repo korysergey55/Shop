@@ -1,8 +1,9 @@
 import { lazy } from "react";
+import Logo from "../Components/logo/Logo";
 
 export const mainRoutes = [
  {
-  name: "Home",
+  name: <Logo />,
   path: "/",
   component: lazy(() => import("../pages/HomePage")),
   exact: true,
@@ -16,20 +17,37 @@ export const mainRoutes = [
   exact: false,
   isRestricted: true,
   isPrivate: false,
- },
+},
+{
+ name: "Accessories",
+ path: "/accessories",
+ component: "Accessories",
+ exact: false,
+ isRestricted: true,
+ isPrivate: false,
+},
+{
+ name: "Contacts",
+ path: "/contacts",
+ component: "Contacts",
+ exact: false,
+ isRestricted: true,
+ isPrivate: false,
+},
+{
+ name: "Cart",
+ path: "/cart",
+ component: lazy(() => import("../pages/CartPage")),
+ exact: true,
+ isRestricted: true,
+ isPrivate: false,
+ cartLength:null,
+},
  {
-  name: "Mining",
-  path: "/mining",
-  component: lazy(() => import("../pages/MiningPage")),
+  name: "Service",
+  path: "/service",
+  component: lazy(() => import("../pages/ServicePage")),
   exact: false,
-  isRestricted: true,
-  isPrivate: false,
- },
- {
-  name: "Cart",
-  path: "/cart",
-  component: lazy(() => import("../pages/CartPage")),
-  exact: true,
   isRestricted: true,
   isPrivate: false,
  },

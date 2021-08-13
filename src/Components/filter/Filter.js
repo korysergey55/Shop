@@ -10,13 +10,13 @@ const Filter = ({ filter, setFilter }) => {
  };
  return (
   <label className={styles.filterLabel}>
-   Find goods
+   Find Apple
    <input
     className={styles.filterInput}
     type="text"
     value={filter}
     onChange={onHandleChange}
-    placeholder="Enter model heare"
+    placeholder="Enter somsing heare"
    />
   </label>
  );

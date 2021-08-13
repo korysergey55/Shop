@@ -2,28 +2,30 @@ import React from "react";
 import styles from "./CartListStyled.module.css";
 import CartListItem from "./cartListItem/CartListItem";
 
-import { connect } from "react-redux";
-import { createOrder, removeFromCartByID } from "../../redux/cart/cartActions";
+import { useDispatch, useSelector } from "react-redux";
+import { createOrder } from "../../redux/cart/cartActions";
+import { cartItemLengthSelector, cartItemSelector } from "../../redux/cart/cartSelectors";
 
-const CartList = ({ cart, removeFromCartByID, createOrder }) => {
+const CartList = () => {
+    
+ const cartItems = useSelector(cartItemSelector);
+ 
+ const dispatch = useDispatch();
 
  const getTotalPrice = () =>
-  cart.reduce((acc, product) => {
+  cartItems.reduce((acc, product) => {
    acc += Number(product.price);
    return acc;
   }, 0);
 
  return (
   <div className={styles.CartListContainerWrapper}>
-   {cart.length ? (
+   {cartItems.length ? (
     <>
+    
      <ul className={styles.CartListContainer}>
-      {cart.map((product) => (
-       <CartListItem
-        key={product.id}
-        product={product}
-        removeFromCart={removeFromCartByID}
-       />
+      {cartItems.map((product) => (
+       <CartListItem key={product.id} product={product} />
       ))}
      </ul>
      <div className={styles.totalInfo}>
@@ -31,9 +33,13 @@ const CartList = ({ cart, removeFromCartByID, createOrder }) => {
       <p className={styles.totalInfoPrice}>
        {getTotalPrice()} <span className={styles.totalInfoPrice}>грн</span>
       </p>
-     <button type="button" onClick={createOrder} className={styles.orderButton}>
-      Bay 
-     </button>
+      <button
+       type="button"
+       onClick={() => dispatch(createOrder())}
+       className={styles.orderButton}
+      >
+       Bay
+      </button>
      </div>
     </>
    ) : (
@@ -42,9 +48,4 @@ const CartList = ({ cart, removeFromCartByID, createOrder }) => {
   </div>
  );
 };
-
-const mapStateToProps = (state) => ({ cart: state.cart.items });
-
-const mapDispatchToProps = { removeFromCartByID, createOrder };
-
-export default connect(mapStateToProps, mapDispatchToProps)(CartList);
+export default CartList;

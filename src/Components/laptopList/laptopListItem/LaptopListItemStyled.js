@@ -30,6 +30,9 @@ export const ListItemContainer = styled.li`
  .listItemImage {
   height: 100%;
  }
+ .listItemImage:hover {
+  cursor: pointer;
+ }
  .colorsList {
   display: flex;
   list-style: none;

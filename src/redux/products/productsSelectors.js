@@ -5,5 +5,6 @@ export const getLaptopsSelector = (state) => state.products.items.laptops;
 
 export const getLoaderSelector = (state) => state.products.loader;
 
+export const getProductWithIdSelector = (state) => state.products.productWithId;
 
 

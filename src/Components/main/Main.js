@@ -2,7 +2,7 @@ import React, { Component, Suspense } from "react";
 import { MainContainer } from "./MainStyled";
 import { Switch, Route } from "react-router-dom";
 import { mainRoutes } from "../../routes/mainRoutes";
-import { createNewOrderApi, getAllAdvByCategoryApi } from "../../services/api";
+import { getAllAdvByCategoryApi } from "../../services/api";
 
 class Main extends Component {
  state = {
@@ -39,26 +39,26 @@ class Main extends Component {
   // }
  };
 
- addNewAdv = (category, product) => {
-  this.setState((prevState) => ({
-   [category]: [...prevState[category], product],
-  }));
- };
+//  addNewAdv = (category, product) => {
+//   this.setState((prevState) => ({
+//    [category]: [...prevState[category], product],
+//   }));
+//  };
 
- addToCart = (product) =>
-  this.setState((prev) => ({ cart: [...prev.cart, product] }));
+//  addToCart = (product) =>
+//   this.setState((prev) => ({ cart: [...prev.cart, product] }));
 
- removeFromCart = (id) =>
-  this.setState((prev) => ({
-   cart: [...prev.cart.filter((product) => product.id !== id)],
-  }));
+//  removeFromCart = (id) =>
+//   this.setState((prev) => ({
+//    cart: [...prev.cart.filter((product) => product.id !== id)],
+//   }));
 
- createOrder = () => {
-  createNewOrderApi(this.state.cart);
-  this.removeAllFromCart();
- };
+//  createOrder = () => {
+//   createNewOrderApi(this.state.cart);
+//   this.removeAllFromCart();
+//  };
 
- removeAllFromCart = () => this.setState({ cart: [] });
+//  removeAllFromCart = () => this.setState({ cart: [] });
 
  getData = (name) => {
   switch (name) {
@@ -89,12 +89,12 @@ class Main extends Component {
    <MainContainer>
     <Suspense fallback={<h2>...loading</h2>}>
      <Switch>
-      {mainRoutes.map(({ name, path, exact, component }) => (
+      {mainRoutes.map((route) => (
        <Route
-        path={path}
-        exact={exact}
-        component={component}
-        key={path}
+        path={route.path}
+        exact={route.exact}
+        component={route.component}
+        key={route.path}
        />
       ))}
      </Switch>

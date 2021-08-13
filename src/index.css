@@ -29,3 +29,10 @@ button:hover {
   background-color: #5f73a1;
   cursor: pointer;
 }
+
+.cartLength{
+  color:beige;
+  position: absolute;
+  top:-21%;
+  left: 104%;
+}

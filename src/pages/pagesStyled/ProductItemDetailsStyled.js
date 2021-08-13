@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ListItemContainer = styled.li`
+export const ProductDetailsContainer = styled.div`
  width: 100%;
  padding: 20px;
 
@@ -11,11 +11,8 @@ export const ListItemContainer = styled.li`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 330px;
-  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
-   1px 4px 6px rgba(0, 0, 0, 0.16);
+  margin-top: 20px;
  }
-
  .listItemTitle {
   font-size: 16px;
   text-align: center;
@@ -30,9 +27,6 @@ export const ListItemContainer = styled.li`
 
  .listItemImage {
   height: 100%;
- }
- .listItemImage:hover {
-  cursor: pointer;
  }
  .colorsList {
   display: flex;
@@ -62,10 +56,14 @@ export const ListItemContainer = styled.li`
  }
  .addToCartButton {
   width: 50%;
-  border-radius: 0 14px 14px 0;
-  margin-right: 1px;
+  border-radius: 7px;
+  margin-right: 10px;
  }
-
+ .bayNow {
+  width: 50%;
+  border-radius: 7px;
+  margin-right: 10px;
+ }
  @media (min-width: 768px) {
   width: 50%;
  }

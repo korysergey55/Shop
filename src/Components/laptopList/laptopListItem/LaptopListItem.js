@@ -1,24 +1,39 @@
 import React from "react";
 import { ListItemContainer } from "./LaptopListItemStyled";
-import PropTypes from "prop-types";
-import { withRouter } from "react-router-dom";
 
-const LaptopListItem = ({ laptop, addToCart, history, match, location }) => {
+import { useDispatch } from "react-redux";
+import { useHistory, useLocation, useRouteMatch, withRouter } from "react-router-dom";
+import { addToCart } from "../../../redux/cart/cartActions";
+
+const LaptopListItem = ({ laptop }) => {
+
+ const dispatch = useDispatch();
+ const location = useLocation();
+ const history = useHistory();
+ const match = useRouteMatch();
+
  const addProduct = () => {
-  addToCart(laptop);
+  dispatch(addToCart(laptop));
  };
+
  const openDetails = () => {
   history.push({
    pathname: `${match.path}/${laptop.id}`,
    state: { from: location.pathname },
   });
  };
+
  return (
   <ListItemContainer>
    <div className="content">
     <h3 className="listItemTitle">{laptop.name}</h3>
     <div className="imageWrapper">
-     <img src={laptop.image} alt={laptop.name} className="listItemImage" />
+     <img
+      src={laptop.image}
+      alt={laptop.name}
+      className="listItemImage"
+      onClick={openDetails}
+     />
     </div>
     <p className="priceTitle">
      {laptop.isSale ? (
@@ -45,13 +60,3 @@ const LaptopListItem = ({ laptop, addToCart, history, match, location }) => {
 };
 
 export default withRouter(LaptopListItem);
-
-LaptopListItem.propTypes = {
- laptop: PropTypes.shape({
-  name: PropTypes.string,
-  image: PropTypes.string,
-  isSale: PropTypes.bool,
-  description: PropTypes.string,
-  price: PropTypes.any,
- }),
-};
