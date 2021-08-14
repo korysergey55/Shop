@@ -1,16 +1,22 @@
 import React from "react";
 import styles from "./FilterStyled.module.css";
-import { connect } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setFilter } from "../../redux/filter/filterActions";
 import { filterSelector } from "../../redux/filter/filterSelectors";
 
-const Filter = ({ filter, setFilter }) => {
+const Filter = () => {
+
+ const filter = useSelector(filterSelector);
+ const dispatch = useDispatch();
+
  const onHandleChange = (event) => {
-  setFilter(event.target.value);
+  const feltrValue = event.target.value;
+  dispatch(setFilter(feltrValue));
  };
+ 
  return (
   <label className={styles.filterLabel}>
-   Find Apple
+   Find Apple Product
    <input
     className={styles.filterInput}
     type="text"
@@ -22,12 +28,4 @@ const Filter = ({ filter, setFilter }) => {
  );
 };
 
-const mapStateToProps = (state, ownProps) => ({
- filter: filterSelector(state),
-});
-
-const mapDispatchToProps = {
- setFilter,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Filter);
+export default Filter;

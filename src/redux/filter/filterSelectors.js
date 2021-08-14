@@ -1,4 +1,3 @@
-
 import { createSelector } from "@reduxjs/toolkit";
 
 export const filterSelector = (state) => state.filter.filter;
@@ -8,8 +7,8 @@ export const getProductsSelector = (state, category) =>
 
 export const getfilteredProductSelector = createSelector(
  [getProductsSelector, filterSelector],
- (products, filter) =>
-  products.filter((product) =>
-   product.name.toLowerCase().includes(filter.toLowerCase())
+ (products, filterValue) =>
+  products?.items.phones.filter((product) =>
+   product.name.toLowerCase().includes(filterValue.toLowerCase())
   )
 );

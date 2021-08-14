@@ -2,6 +2,9 @@ import { createReducer, combineReducers } from "@reduxjs/toolkit";
 import {
  setPhones,
  setLaptops,
+ setIpads,
+ setAppleWatches,
+ setAirPods,
  setProductWithId,
  setError,
  resetError,
@@ -9,10 +12,16 @@ import {
 } from "./productsActions";
 
 const productItemsReducer = createReducer(
- { phones: [], laptops: [] },
+ { phones: [], laptops: [], ipads: [], appleWatches: [], airPods: [] },
  {
   [setPhones]: (state, action) => ({ ...state, phones: [...action.payload] }),
   [setLaptops]: (state, action) => ({ ...state, laptops: [...action.payload] }),
+  [setIpads]: (state, action) => ({ ...state, ipads: [...action.payload] }),
+  [setAppleWatches]: (state, action) => ({
+   ...state,
+   appleWatches: [...action.payload],
+  }),
+  [setAirPods]: (state, action) => ({ ...state, airPods: [...action.payload] }),
  }
 );
 const productWithIdReducer = createReducer(

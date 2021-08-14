@@ -32,7 +32,7 @@ export const productsRoutes = [
  {
   name: "iPad",
   path: "/ipad",
-  component: "iPad",
+  component: lazy(()=> import ("../Components/ipad/IpadList")),
   exact: true,
   isLink: true,
   icon: <IpadIcon />,

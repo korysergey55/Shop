@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { AdvFormContainer } from "./AdvFormStyled";
 import { createNewAdvApi } from "../../services/api";
 
-const productCategories = ["phones", "laptops"];
+const productCategories = ["phones", "laptops","ipad","appleWatch","airPods",];
 
 const initialState = {
  category: productCategories[0],
@@ -28,8 +28,9 @@ class AdvForm extends Component {
  };
  onHandleSubmit = (e) => {
   e.preventDefault();
-
   createNewAdvApi(this.state.category, { ...this.state });
+  alert("Товар добавлен");
+  this.setState({ ...initialState });
  };
  render() {
   return (

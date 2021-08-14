@@ -26,18 +26,17 @@ export const getAllAdvByCategoryApiOperation =
     }
    }
   } catch (error) {
+   dispatch(setError(error));
   } finally {
    dispatch(setLoader());
   }
  };
 
 export const getProductByIdOperation = (category, id) => async (dispatch) => {
- 
-    try {
+ try {
   const response = await getProductByIDApi(category, id);
   dispatch(setProductWithId(response));
- }
-  catch (error) {
-  dispatch(setError());
+ } catch (error) {
+  dispatch(setError(error));
  }
 };

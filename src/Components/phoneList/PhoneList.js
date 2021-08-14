@@ -7,11 +7,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 
 import { setPhones } from "../../redux/products/productsActions";
-import { getPhonesSelector } from "../../redux/products/productsSelectors";
+import { getProductsFilterSelector } from "../../redux/products/productsSelectors";
 
 const PhoneList = () => {
  const dispatch = useDispatch();
- const phones = useSelector(getPhonesSelector);
+ const phones = useSelector((state) =>
+  getProductsFilterSelector(state, "phones")
+ );
  useEffect(() => {
   dispatch(getPhones);
  }, [dispatch]);

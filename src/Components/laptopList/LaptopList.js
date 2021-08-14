@@ -6,13 +6,14 @@ import { getAllAdvByCategoryApi } from "../../services/api";
 import { setLaptops } from "../../redux/products/productsActions";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getLaptopsSelector } from "../../redux/products/productsSelectors";
+import {getProductsFilterSelector} from "../../redux/products/productsSelectors";
 
 const LaptopList = () => {
 
  const dispatch = useDispatch();
- const laptops = useSelector(getLaptopsSelector);
- 
+ const laptops = useSelector((state) =>
+  getProductsFilterSelector(state, "laptops")
+ );
  useEffect(() => {
   dispatch(getLaptops);
  }, [dispatch]);
@@ -20,11 +21,11 @@ const LaptopList = () => {
  const getLaptops = async () => {
   const response = await getAllAdvByCategoryApi("laptops");
   if (response) {
-   const laptops = Object.keys(response).map((key) => ({
+   const laptopsList = Object.keys(response).map((key) => ({
     id: key,
     ...response[key],
    }));
-   dispatch(setLaptops(laptops));
+   dispatch(setLaptops(laptopsList));
   }
  };
 
