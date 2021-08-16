@@ -10,10 +10,12 @@ import { setPhones } from "../../redux/products/productsActions";
 import { getProductsFilterSelector } from "../../redux/products/productsSelectors";
 
 const PhoneList = () => {
+
  const dispatch = useDispatch();
  const phones = useSelector((state) =>
   getProductsFilterSelector(state, "phones")
  );
+ 
  useEffect(() => {
   dispatch(getPhones);
  }, [dispatch]);

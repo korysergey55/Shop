@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import { HeaderContainer } from "./HeaderStyled";
 import sprite from "../../icons/header/symbol-defs.svg";
-import Logo from "../logo/Logo";
 import HeaderList from "./headerList/HeaderList";
 import Modal from "../modal/Modal";
-import { withRouter } from "react-router-dom";
+import { withRouter, NavLink } from "react-router-dom";
+import { connect } from "react-redux";
+import { logoutUserOperation } from "../../redux/auth/authOperations";
+import { mainRoutes } from "../../routes/mainRoutes";
 
 class Header extends Component {
  state = {
@@ -31,6 +33,7 @@ class Header extends Component {
 
  render() {
   const { width, breakPoint, isModalOpen } = this.state;
+  //   const { history } = this.props.history;
   return (
    <HeaderContainer>
     <h2 className="headerTitle"> AppleMacShop</h2>
@@ -45,9 +48,28 @@ class Header extends Component {
      <svg className="headerIcon" onClick={this.setModalState}>
       <use href={sprite + "#icon-menu"} />
      </svg>
-    ) : (
-     <HeaderList />
-    )}
+    ) : null}
+
+    <ul className="navigationList">
+     {mainRoutes.map((route) => (
+      <HeaderList route={route} token={this.props.token} key={route.path} />
+     ))}
+     {this.props.token && (
+      <>
+       <li className="navigationListItem">
+        <NavLink
+         onClick={this.props.logoutUserOperation}
+         to="logout"
+         className="navigationListItemAnchor"
+         activeClassName="navigationListItemActive"
+        >
+         Logout
+        </NavLink>
+       </li>
+      </>
+     )}
+    </ul>
+
     {isModalOpen && (
      <Modal hideModal={this.setModalState}>
       <HeaderList hideModal={this.setModalState} />
@@ -57,5 +79,12 @@ class Header extends Component {
   );
  }
 }
+const mapStateToProps = (state, ownProps) => ({
+ token: state.auth.token,
+});
 
-export default withRouter(Header);
+const mapDispatchToProps = {
+ logoutUserOperation,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Header));

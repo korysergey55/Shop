@@ -7,19 +7,24 @@ import productsReducer from "./products/productsReducer";
 // ----------persist-----------------//
 import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-const persistAuthConfig = {
+
+const persistCartConfig = {
  key: "cart",
  storage,
- whitelist: [ "items"],
+ whitelist: ["items"],
+};
+const persistAuthConfig = {
+ key: "token",
+ storage,
+ whitelist: ["token"],
 };
 
 const rootReducer = combineReducers({
- cart: persistReducer(persistAuthConfig, cartReducer),
+ auth: authReducer,
+ //  auth: persistReducer(persistAuthConfig, authReducer),
+ cart: persistReducer(persistCartConfig, cartReducer),
  products: productsReducer,
  filter: FilterReducer,
- auth: authReducer,
 });
 
 export default rootReducer;
-
-

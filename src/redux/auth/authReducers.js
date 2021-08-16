@@ -8,14 +8,15 @@ import {
  logoutUserAction,
 } from "./authActions";
 
+const registerReducer = createReducer(null, {
+ [registerUserAction]: (state, action) => action.payload,
+});
 const tokenReducer = createReducer(null, {
- [registerUserAction]: (state, action) => action.payload.token,
- [loginUserAction]: (state, action) => action.payload.token,
+ [loginUserAction]: (state, action) => action.payload,
  [logoutUserAction]: (state, action) => null,
 });
 
 const userReducer = createReducer(null, {
- [registerUserAction]: (state, action) => action.payload,
  [loginUserAction]: (state, action) => action.payload,
  [logoutUserAction]: (state, action) => null,
 });
@@ -29,6 +30,7 @@ const errorReducer = createReducer(null, {
 const authReducer = combineReducers({
  token: tokenReducer,
  user: userReducer,
+ registration: registerReducer,
  error: errorReducer,
 });
 
