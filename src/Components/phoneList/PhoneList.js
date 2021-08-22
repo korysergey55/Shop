@@ -2,23 +2,20 @@ import React from "react";
 import { PhoneListContainer } from "./PhoneListStyled";
 import PhoneListItem from "./phoneListItem/PhoneListItem";
 import { getAllAdvByCategoryApi } from "../../services/api";
-
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-
 import { setPhones } from "../../redux/products/productsActions";
 import { getProductsFilterSelector } from "../../redux/products/productsSelectors";
 
 const PhoneList = () => {
-
  const dispatch = useDispatch();
  const phones = useSelector((state) =>
   getProductsFilterSelector(state, "phones")
  );
- 
+
  useEffect(() => {
   dispatch(getPhones);
- }, [dispatch]);
+ });
 
  const getPhones = async () => {
   const response = await getAllAdvByCategoryApi("phones");

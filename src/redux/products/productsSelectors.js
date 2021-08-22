@@ -10,6 +10,6 @@ export const getLoaderSelector = (state) => state.products.loader;
 
 export const getProductsFilterSelector = (state, category ="phones") =>
  state.products.items[category].filter((product) =>
-  product.name.toLowerCase().includes(state.filter.filter.toLowerCase())
+  product.name?.toLowerCase().includes(state.filter.filter.toLowerCase())
  );
 

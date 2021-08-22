@@ -1,34 +1,54 @@
 import { createReducer, combineReducers } from "@reduxjs/toolkit";
 import {
-  addToCart,
-  createOrder,
-  removeFromCartByID,
-  resetError,
-  setError,
-  setLoader,
+ addToCart,
+ createOrder,
+ removeFromCartByID,
+ remuveAllFromCart,
+ taggleModal,
+ resetError,
+ setError,
+ setLoader,
 } from "./cartActions";
 
 const cartItemsReducer = createReducer([], {
-  [addToCart]: (state, action) => [...state, action.payload],
-  [removeFromCartByID]: (state, action) => [
-    ...state.filter((cartItem) => cartItem.id !== action.payload),
-  ],
-  [createOrder]: () => [],
+ [addToCart]: (state, action) => [...state, action.payload],
+ [removeFromCartByID]: (state, action) => [
+  ...state.filter((cartItem) => cartItem.id !== action.payload),
+ ],
+ [remuveAllFromCart]: () => [],
+});
+
+const cartOrder = createReducer(false, {
+ [createOrder]: (state, action) => action.payload,
+});
+
+const totalPriceOrder = createReducer(false, {
+ [createOrder]: (state, action) => action.payload.reduce((acc, product) => {
+   acc += Number(product.price);
+   return acc;
+  }, 0)
+});
+
+const cartModalReducer = createReducer(false, {
+ [taggleModal]: (state, action) => !state,
 });
 
 const cartLoaderReducer = createReducer(false, {
-  [setLoader]: (state) => !state,
+ [setLoader]: (state) => !state,
 });
 
 const cartErrorReducer = createReducer("", {
-  [setError]: (_, action) => action.payload,
-  [resetError]: () => "",
+ [setError]: (_, action) => action.payload,
+ [resetError]: () => "",
 });
 
 const cartReducer = combineReducers({
-  items: cartItemsReducer,
-  loader: cartLoaderReducer,
-  error: cartErrorReducer,
+ items: cartItemsReducer,
+ order: cartOrder,
+ total: totalPriceOrder,
+ isModalOpen: cartModalReducer,
+ loader: cartLoaderReducer,
+ error: cartErrorReducer,
 });
 
 export default cartReducer;

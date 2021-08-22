@@ -5,13 +5,12 @@ import { useDispatch } from "react-redux";
 import { removeFromCartByID } from "../../../redux/cart/cartActions";
 
 const CartListItem = ({ product }) => {
-
  const dispatch = useDispatch();
  const { name, price, id, image } = product;
- const remove = () => (dispatch(removeFromCartByID(id)));
+ const remove = () => dispatch(removeFromCartByID(id));
 
  return (
-  <li li className={styles.CartListItemContainer}>
+  <li className={styles.CartListItemContainer}>
    <p className={styles.cartItemName}>{name}</p>
    <img src={image} alt={name} className={styles.cartItemNameImage} />
    <p className={styles.cartPrice}>{price} грн</p>

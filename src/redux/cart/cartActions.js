@@ -3,6 +3,9 @@ import { createAction } from "@reduxjs/toolkit";
 const addToCart = createAction("cart/addToCart");
 const removeFromCartByID = createAction("cart/removeFromCartByID");
 const createOrder = createAction("cart/createOrder");
+const remuveAllFromCart = createAction("cart/remuveAllFromCart");
+const taggleModal = createAction("cart/taggleModal");
+
 const setLoader = createAction("cart/setLoader");
 const setError = createAction("cart/setError");
 const resetError = createAction("cart/resetError");
@@ -11,6 +14,8 @@ export {
   addToCart,
   removeFromCartByID,
   createOrder,
+  remuveAllFromCart,
+  taggleModal,
   setLoader,
   setError,
   resetError,

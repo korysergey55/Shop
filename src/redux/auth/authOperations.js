@@ -26,6 +26,7 @@ export const registrationUserOperation =
 
 export const loginUserOperation =
  (InputFormState, history) => async (dispatch) => {
+  
   try {
    const response = await loginUserApi(InputFormState);
    dispatch(loginUserAction(response.data));
@@ -41,7 +42,7 @@ export const logoutUserOperation = () => async (dispatch, getState) => {
  try {
   const response = await logoutApi(authToken);
   dispatch(logoutUserAction(response.data));
-  // history.push("/");
+    // history.push("/");
  } catch (error) {
   dispatch(logoutUserActionError(error.message));
  }

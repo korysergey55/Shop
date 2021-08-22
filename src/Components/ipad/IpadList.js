@@ -7,11 +7,13 @@ import { setIpads } from "../../redux/products/productsActions";
 import { getIpadsSelector } from "../../redux/products/productsSelectors";
 
 const IpadList = () => {
+
  const dispatch = useDispatch();
  const ipads = useSelector(getIpadsSelector);
+
  useEffect(() => {
   dispatch(getIpads);
- }, [dispatch]);
+ });
 
  const getIpads = async () => {
   const response = await getAllAdvByCategoryApi("ipad");

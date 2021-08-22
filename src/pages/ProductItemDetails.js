@@ -23,7 +23,7 @@ const ProductItemDetails = () => {
   dispatch(
    getProductByIdOperation(match.params.category, match.params.productID)
   );
- }, [dispatch]);
+ }, [dispatch, match,]);
 
  const goBack = () => {
   if (location.state) {

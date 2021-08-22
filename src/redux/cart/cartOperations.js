@@ -7,4 +7,4 @@ const addToCartOperation = (data) => (dispatch) => {
  
 };
 
-export default { addToCartOperation };
+export  { addToCartOperation };

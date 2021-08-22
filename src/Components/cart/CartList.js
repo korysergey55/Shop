@@ -3,13 +3,15 @@ import styles from "./CartListStyled.module.css";
 import CartListItem from "./cartListItem/CartListItem";
 
 import { useDispatch, useSelector } from "react-redux";
-import { createOrder } from "../../redux/cart/cartActions";
-import { cartItemLengthSelector, cartItemSelector } from "../../redux/cart/cartSelectors";
+import {
+ createOrder,
+ remuveAllFromCart,
+ taggleModal,
+} from "../../redux/cart/cartActions";
+import { cartItemSelector } from "../../redux/cart/cartSelectors";
 
 const CartList = () => {
-    
  const cartItems = useSelector(cartItemSelector);
- 
  const dispatch = useDispatch();
 
  const getTotalPrice = () =>
@@ -22,7 +24,6 @@ const CartList = () => {
   <div className={styles.CartListContainerWrapper}>
    {cartItems.length ? (
     <>
-    
      <ul className={styles.CartListContainer}>
       {cartItems.map((product) => (
        <CartListItem key={product.id} product={product} />
@@ -35,10 +36,17 @@ const CartList = () => {
       </p>
       <button
        type="button"
-       onClick={() => dispatch(createOrder())}
+       onClick={() => dispatch(createOrder(cartItems)),  () => dispatch(taggleModal(cartItems))}
        className={styles.orderButton}
       >
        Bay
+      </button>
+      <button
+       type="button"
+       onClick={() => dispatch(remuveAllFromCart())}
+       className={styles.orderButton}
+      >
+       Remuve all
       </button>
      </div>
     </>
