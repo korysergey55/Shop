@@ -2,6 +2,7 @@ import React from "react";
 import { AdvFormContainer } from "./AdvFormStyled";
 import { createNewAdvApi } from "../../services/api";
 import { useState } from "react";
+import { store } from "react-notifications-component";
 
 const productCategories = [
  "phones",
@@ -34,10 +35,22 @@ const AdvForm = () => {
 
  const onHandleSubmit = (evt) => {
   evt.preventDefault();
-  createNewAdvApi(state.category, {
-   ...state,
+  createNewAdvApi(state.category, { ...state });
+
+  store.addNotification({
+   title: "Wonderful!",
+   message: "Товар добавлен в корзину",
+   type: "success",
+   insert: "top",
+   container: "top-right",
+   animationIn: ["animate__animated", "animate__fadeIn"],
+   animationOut: ["animate__animated", "animate__fadeOut"],
+   dismiss: {
+    duration: 5000,
+    onScreen: false,
+   },
   });
-  alert("Товар добавлен");
+  
   setState({ ...initialState });
  };
 

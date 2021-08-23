@@ -9,7 +9,7 @@ import {
 } from "react-router-dom";
 import { addToCart } from "../../../redux/cart/cartActions";
 import { cartOrderSelector } from "../../../redux/cart/cartSelectors";
-
+import { store } from "react-notifications-component";
 
 const PhoneListItem = ({ phone }) => {
  const dispatch = useDispatch();
@@ -20,9 +20,21 @@ const PhoneListItem = ({ phone }) => {
  const cartItems = useSelector(cartOrderSelector);
 
  const addProduct = () => {
-     console.log(cartItems);
   dispatch(addToCart(phone));
-  alert("Товар добавлен в корзину");
+
+  store.addNotification({
+   title: "Wonderful!",
+   message: "Товар добавлен в корзину",
+   type: "success",
+   insert: "top",
+   container: "top-center",
+   animationIn: ["animate__animated", "animate__fadeIn"],
+   animationOut: ["animate__animated", "animate__fadeOut"],
+   dismiss: {
+    duration: 5000,
+    onScreen: false,
+   },
+  });
  };
 
  const openDetails = () => {

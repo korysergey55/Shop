@@ -10,8 +10,8 @@ const Filter = () => {
  const dispatch = useDispatch();
 
  const onHandleChange = (event) => {
-  const feltrInputValue = event.target.value;
-  dispatch(setFilter(feltrInputValue));
+  const felterInputValue = event.target.value;
+  dispatch(setFilter(felterInputValue));
  };
  
  return (

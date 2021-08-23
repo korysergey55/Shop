@@ -4,6 +4,7 @@ import { ListItemContainer } from "./LaptopListItemStyled";
 import { useDispatch } from "react-redux";
 import { useHistory, useLocation, useRouteMatch, withRouter } from "react-router-dom";
 import { addToCart } from "../../../redux/cart/cartActions";
+import { store } from "react-notifications-component";
 
 const LaptopListItem = ({ laptop }) => {
 
@@ -14,7 +15,21 @@ const LaptopListItem = ({ laptop }) => {
 
  const addProduct = () => {
   dispatch(addToCart(laptop));
-  alert("Товар добавлен в корзину");
+  
+  store.addNotification({
+   title: "Wonderful!",
+   message: "Товар добавлен в корзину",
+   type: "success",
+   insert: "top",
+   container: "top-center",
+   animationIn: ["animate__animated", "animate__fadeIn"],
+   animationOut: ["animate__animated", "animate__fadeOut"],
+   dismiss: {
+    duration: 5000,
+    onScreen: false,
+   },
+  });
+  
  };
 
  const openDetails = () => {
