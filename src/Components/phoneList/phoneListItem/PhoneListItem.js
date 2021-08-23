@@ -1,6 +1,6 @@
 import React from "react";
 import { ListItemContainer } from "./PhoneListItemStyled";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
  useHistory,
  useLocation,
@@ -8,6 +8,8 @@ import {
  withRouter,
 } from "react-router-dom";
 import { addToCart } from "../../../redux/cart/cartActions";
+import { cartOrderSelector } from "../../../redux/cart/cartSelectors";
+
 
 const PhoneListItem = ({ phone }) => {
  const dispatch = useDispatch();
@@ -15,7 +17,10 @@ const PhoneListItem = ({ phone }) => {
  const location = useLocation();
  const match = useRouteMatch();
 
+ const cartItems = useSelector(cartOrderSelector);
+
  const addProduct = () => {
+     console.log(cartItems);
   dispatch(addToCart(phone));
   alert("Товар добавлен в корзину");
  };

@@ -14,6 +14,7 @@ const LaptopListItem = ({ laptop }) => {
 
  const addProduct = () => {
   dispatch(addToCart(laptop));
+  alert("Товар добавлен в корзину");
  };
 
  const openDetails = () => {

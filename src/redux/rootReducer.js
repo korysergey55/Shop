@@ -11,7 +11,7 @@ import storage from "redux-persist/lib/storage";
 const persistCartConfig = {
  key: "cart",
  storage,
- whitelist: ["items"],
+ whitelist: ["items", ],
 };
 const persistAuthConfig = {
  key: "token",

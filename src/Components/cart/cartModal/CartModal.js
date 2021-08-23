@@ -1,12 +1,11 @@
 import React from "react";
-import styles from './CartModalStyled.module.css'
+import styles from "./CartModalStyled.module.css";
 import { createPortal } from "react-dom";
 import { useDispatch } from "react-redux";
 import { taggleModal } from "../../../redux/cart/cartActions";
 import { useEffect } from "react";
 
 const CartModal = ({ children }) => {
-
  const dispatch = useDispatch();
  useEffect(() => {
   window.addEventListener("keydown", handleEsc);
@@ -19,7 +18,7 @@ const CartModal = ({ children }) => {
    body.style.overflow = "auto";
   };
  });
- 
+
  const handleEsc = (evt) => {
   if (evt.code === "Escape") {
    dispatch(taggleModal());
@@ -50,4 +49,3 @@ const CartModal = ({ children }) => {
 };
 
 export default CartModal;
-

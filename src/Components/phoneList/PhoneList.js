@@ -15,7 +15,7 @@ const PhoneList = () => {
 
  useEffect(() => {
   dispatch(getPhones);
- });
+ }, [dispatch]);
 
  const getPhones = async () => {
   const response = await getAllAdvByCategoryApi("phones");

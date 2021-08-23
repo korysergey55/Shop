@@ -23,7 +23,8 @@ const cartOrder = createReducer(false, {
 });
 
 const totalPriceOrder = createReducer(false, {
- [createOrder]: (state, action) => action.payload.reduce((acc, product) => {
+ [createOrder]: (state, action) => action.payload
+ .reduce((acc, product) => {
    acc += Number(product.price);
    return acc;
   }, 0)

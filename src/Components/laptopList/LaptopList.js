@@ -16,7 +16,7 @@ const LaptopList = () => {
  );
  useEffect(() => {
   dispatch(getLaptops);
- });
+ }, [dispatch]);
 
  const getLaptops = async () => {
   const response = await getAllAdvByCategoryApi("laptops");

@@ -3,22 +3,16 @@ import styles from "./CartListStyled.module.css";
 import CartListItem from "./cartListItem/CartListItem";
 
 import { useDispatch, useSelector } from "react-redux";
+import { remuveAllFromCart, taggleModal } from "../../redux/cart/cartActions";
 import {
- createOrder,
- remuveAllFromCart,
- taggleModal,
-} from "../../redux/cart/cartActions";
-import { cartItemSelector } from "../../redux/cart/cartSelectors";
+ cartItemSelector,
+ cartTotalPricelSelector,
+} from "../../redux/cart/cartSelectors";
 
 const CartList = () => {
- const cartItems = useSelector(cartItemSelector);
  const dispatch = useDispatch();
-
- const getTotalPrice = () =>
-  cartItems.reduce((acc, product) => {
-   acc += Number(product.price);
-   return acc;
-  }, 0);
+ const cartItems = useSelector(cartItemSelector);
+ const totalPriceInOrder = useSelector(cartTotalPricelSelector);
 
  return (
   <div className={styles.CartListContainerWrapper}>
@@ -32,11 +26,11 @@ const CartList = () => {
      <div className={styles.totalInfo}>
       <p className={styles.totalInfoTitle}>Total price in order:</p>
       <p className={styles.totalInfoPrice}>
-       {getTotalPrice()} <span className={styles.totalInfoPrice}>грн</span>
+       {totalPriceInOrder} <span className={styles.totalInfoPrice}>грн</span>
       </p>
       <button
        type="button"
-       onClick={() => dispatch(createOrder(cartItems)),  () => dispatch(taggleModal(cartItems))}
+       onClick={() => dispatch(taggleModal())}
        className={styles.orderButton}
       >
        Bay
@@ -44,7 +38,7 @@ const CartList = () => {
       <button
        type="button"
        onClick={() => dispatch(remuveAllFromCart())}
-       className={styles.orderButton}
+       className={styles.remuveOrderButton}
       >
        Remuve all
       </button>
@@ -57,3 +51,9 @@ const CartList = () => {
  );
 };
 export default CartList;
+
+//  const getTotalPrice = () =>
+//   cartItems.reduce((acc, product) => {
+//    acc += Number(product.price);
+//    return acc;
+//   }, 0);

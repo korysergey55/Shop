@@ -13,7 +13,7 @@ const IpadList = () => {
 
  useEffect(() => {
   dispatch(getIpads);
- });
+ }, [dispatch]);
 
  const getIpads = async () => {
   const response = await getAllAdvByCategoryApi("ipad");
