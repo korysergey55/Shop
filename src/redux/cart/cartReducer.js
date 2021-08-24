@@ -18,16 +18,16 @@ const cartItemsReducer = createReducer([], {
  [remuveAllFromCart]: () => [],
 });
 
-const cartOrder = createReducer(false, {
+const cartOrderReducer = createReducer(false, {
  [createOrder]: (state, action) => action.payload,
 });
 
-const totalPriceOrder = createReducer(false, {
- [createOrder]: (state, action) => action.payload
- .reduce((acc, product) => {
+const totalPriceReducer = createReducer(false, {
+ [createOrder]: (state, action) =>
+  action.payload.reduce((acc, product) => {
    acc += Number(product.price);
    return acc;
-  }, 0)
+  }, 0),
 });
 
 const cartModalReducer = createReducer(false, {
@@ -45,8 +45,8 @@ const cartErrorReducer = createReducer("", {
 
 const cartReducer = combineReducers({
  items: cartItemsReducer,
- order: cartOrder,
- total: totalPriceOrder,
+ order: cartOrderReducer,
+ total: totalPriceReducer,
  isModalOpen: cartModalReducer,
  loader: cartLoaderReducer,
  error: cartErrorReducer,

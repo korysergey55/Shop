@@ -1,6 +1,6 @@
 import React from "react";
 import { ListItemContainer } from "./PhoneListItemStyled";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 import {
  useHistory,
  useLocation,
@@ -8,8 +8,7 @@ import {
  withRouter,
 } from "react-router-dom";
 import { addToCart } from "../../../redux/cart/cartActions";
-import { cartOrderSelector } from "../../../redux/cart/cartSelectors";
-import { store } from "react-notifications-component";
+import Notification from '../../notify'
 
 const PhoneListItem = ({ phone }) => {
  const dispatch = useDispatch();
@@ -17,24 +16,9 @@ const PhoneListItem = ({ phone }) => {
  const location = useLocation();
  const match = useRouteMatch();
 
- const cartItems = useSelector(cartOrderSelector);
-
  const addProduct = () => {
   dispatch(addToCart(phone));
-
-  store.addNotification({
-   title: "Wonderful!",
-   message: "Товар добавлен в корзину",
-   type: "success",
-   insert: "top",
-   container: "top-center",
-   animationIn: ["animate__animated", "animate__fadeIn"],
-   animationOut: ["animate__animated", "animate__fadeOut"],
-   dismiss: {
-    duration: 5000,
-    onScreen: false,
-   },
-  });
+  Notification("success");
  };
 
  const openDetails = () => {

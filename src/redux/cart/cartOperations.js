@@ -1,10 +1,24 @@
-import { addToCart } from "./cartActions";
+import Notification from "../../Components/notify";
+import { addToCart, remuveAllFromCart, setError } from "./cartActions";
 
-const addToCartOperation = (data) => (dispatch) => {
- 
-  dispatch(addToCart(data));
-  alert("Товар добавлен в коризину");
- 
+const addToCartOperation = (data) => async (dispatch) => {
+ try {
+  await dispatch(addToCart(data));
+  Notification("sucses");
+ } catch (error) {
+  Notification("danger");
+  dispatch(setError(error));
+ }
 };
 
-export  { addToCartOperation };
+const remuveAllFromCartOperation = (data) => async (dispatch) => {
+ try {
+  await dispatch(remuveAllFromCart());
+  Notification("deleteAllFromCart");
+ } catch (error) {
+  Notification("danger");
+  dispatch(setError(error));
+ }
+};
+
+export { addToCartOperation, remuveAllFromCartOperation };

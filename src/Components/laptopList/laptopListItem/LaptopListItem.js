@@ -2,12 +2,16 @@ import React from "react";
 import { ListItemContainer } from "./LaptopListItemStyled";
 
 import { useDispatch } from "react-redux";
-import { useHistory, useLocation, useRouteMatch, withRouter } from "react-router-dom";
+import {
+ useHistory,
+ useLocation,
+ useRouteMatch,
+ withRouter,
+} from "react-router-dom";
 import { addToCart } from "../../../redux/cart/cartActions";
-import { store } from "react-notifications-component";
+import Notification from "../../notify";
 
 const LaptopListItem = ({ laptop }) => {
-
  const dispatch = useDispatch();
  const location = useLocation();
  const history = useHistory();
@@ -15,21 +19,7 @@ const LaptopListItem = ({ laptop }) => {
 
  const addProduct = () => {
   dispatch(addToCart(laptop));
-  
-  store.addNotification({
-   title: "Wonderful!",
-   message: "Товар добавлен в корзину",
-   type: "success",
-   insert: "top",
-   container: "top-center",
-   animationIn: ["animate__animated", "animate__fadeIn"],
-   animationOut: ["animate__animated", "animate__fadeOut"],
-   dismiss: {
-    duration: 5000,
-    onScreen: false,
-   },
-  });
-  
+  Notification("success");
  };
 
  const openDetails = () => {

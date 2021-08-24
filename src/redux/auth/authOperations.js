@@ -11,7 +11,7 @@ import {
  logoutUserAction,
  logoutUserActionError,
 } from "./authActions";
-import { store } from "react-notifications-component";
+import Notification from "../../Components/notify";
 
 export const registrationUserOperation =
  (InputFormState, history) => async (dispatch) => {
@@ -19,34 +19,10 @@ export const registrationUserOperation =
    const response = await registrationUserApi(InputFormState);
    dispatch(registerUserAction(response.data.name));
    history.push("/login");
-   store.addNotification({
-    title: "Wonderful!",
-    message: "You was secsesful Registrated. Login please",
-    type: "success",
-    insert: "top",
-    container: "top-center",
-    animationIn: ["animate__animated", "animate__fadeIn"],
-    animationOut: ["animate__animated", "animate__fadeOut"],
-    dismiss: {
-     duration: 5000,
-     onScreen: false,
-    },
-   });
+   Notification("registrationSuccess");
   } catch (error) {
    dispatch(registerUserActionError(error.message));
-   store.addNotification({
-    title: "error",
-    message: "error",
-    type: "error",
-    insert: "top",
-    container: "top-center",
-    animationIn: ["animate__animated", "animate__fadeIn"],
-    animationOut: ["animate__animated", "animate__fadeOut"],
-    dismiss: {
-     duration: 5000,
-     onScreen: false,
-    },
-   });
+  Notification("error");
   }
  };
 
@@ -56,19 +32,8 @@ export const loginUserOperation =
    const response = await loginUserApi(InputFormState);
    dispatch(loginUserAction(response.data));
    history.push("/");
-   store.addNotification({
-    title: "Welcome",
-    message: "You was secsesful Login in",
-    type: "success",
-    insert: "top",
-    container: "top-center",
-    animationIn: ["animate__animated", "animate__fadeIn"],
-    animationOut: ["animate__animated", "animate__fadeOut"],
-    dismiss: {
-     duration: 5000,
-     onScreen: false,
-    },
-   });
+   Notification("loginSuccess");
+   
   } catch (error) {
    dispatch(loginUserActionError(error.message));
   }

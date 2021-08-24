@@ -8,6 +8,7 @@ import {
  cartItemSelector,
  cartTotalPricelSelector,
 } from "../../redux/cart/cartSelectors";
+import { remuveAllFromCartOperation } from "../../redux/cart/cartOperations";
 
 const CartList = () => {
  const dispatch = useDispatch();
@@ -37,7 +38,7 @@ const CartList = () => {
       </button>
       <button
        type="button"
-       onClick={() => dispatch(remuveAllFromCart())}
+       onClick={() => dispatch(remuveAllFromCartOperation())}
        className={styles.remuveOrderButton}
       >
        Remuve all
