@@ -33,7 +33,7 @@ class Header extends Component {
 
  render() {
   const { width, breakPoint, isModalOpen } = this.state;
-  //   const { history } = this.props.history;
+  const history = this.state.history;
   return (
    <HeaderContainer>
     <h2 className="headerTitle"> AppleMacShop</h2>
@@ -54,6 +54,7 @@ class Header extends Component {
      {mainRoutes.map((route) => (
       <HeaderList route={route} token={this.props.token} key={route.path} />
      ))}
+
      {this.props.token && (
       <>
        <li className="navigationListItem">
@@ -83,8 +84,14 @@ const mapStateToProps = (state, ownProps) => ({
  token: state.auth.token,
 });
 
-const mapDispatchToProps = {
- logoutUserOperation,
+const mapDispatchToProps = (dispatch) => {
+ return {
+  logoutUserOperation: (history) => dispatch(logoutUserOperation(history)),
+ };
 };
+
+// const mapDispatchToProps = {
+//  logoutUserOperation,
+// };
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Header));

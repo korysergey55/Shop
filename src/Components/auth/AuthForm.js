@@ -57,11 +57,13 @@ class AuthForm extends Component {
  render() {
   return (
    <form className={styles.formAuth} onSubmit={this.onHandleSubmit}>
+
     <h2 className={styles.title}>
      {this.props.location.pathname === "/registration"
       ? "Registration Page"
       : "Login Page"}
     </h2>
+    
     {this.props.location.pathname === "/registration" && (
      <label className={styles.labelName} htmlFor={this.name}>
       Name
@@ -75,10 +77,10 @@ class AuthForm extends Component {
        placeholder="Enter Name"
        pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
        title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
-       id={this.nameInputId}
       />
      </label>
     )}
+
     <label className={styles.labelName} htmlFor={this.email}>
      Email
      <input
@@ -89,7 +91,6 @@ class AuthForm extends Component {
       value={this.state.email}
       required
       placeholder="Enter email"
-      id={this.emailInputId}
      />
     </label>
     <label className={styles.labelName} htmlFor={this.password}>
@@ -102,9 +103,9 @@ class AuthForm extends Component {
       value={this.state.password}
       required
       placeholder="Enter Password"
-      id={this.passwordInputId}
      />
     </label>
+
     {this.props.location.pathname === "/registration" && (
      <>
       <div className={styles.radioContainer}>
@@ -131,6 +132,7 @@ class AuthForm extends Component {
         Женщина
        </label>
       </div>
+
       <select
        className={styles.select}
        name="country"
@@ -147,9 +149,10 @@ class AuthForm extends Component {
          {option.countryName}
         </option>
        ))}
-       {/* <option value="Ukraine">Ukraine</option>
-       <option value="Poland">Poland</option> */}
+       {/* <option value="Ukraine" name="country">Ukraine</option>
+       <option value="Poland" name="country">Poland</option> */}
       </select>
+
       <label className={styles.labelName}>
        <input
         className={styles.checkbox}

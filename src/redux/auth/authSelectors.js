@@ -1,2 +1,2 @@
 
-export const authTokenSelector = (state) => state.token?.name
+export const authTokenSelector = (state) => state.auth.token

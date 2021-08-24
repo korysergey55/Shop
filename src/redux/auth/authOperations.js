@@ -17,12 +17,12 @@ export const registrationUserOperation =
  (InputFormState, history) => async (dispatch) => {
   try {
    const response = await registrationUserApi(InputFormState);
-   dispatch(registerUserAction(response.data.name));
+   dispatch(registerUserAction(response.data));
    history.push("/login");
    Notification("registrationSuccess");
   } catch (error) {
    dispatch(registerUserActionError(error.message));
-  Notification("error");
+   Notification("error");
   }
  };
 
@@ -33,9 +33,9 @@ export const loginUserOperation =
    dispatch(loginUserAction(response.data));
    history.push("/");
    Notification("loginSuccess");
-   
   } catch (error) {
    dispatch(loginUserActionError(error.message));
+   Notification("error");
   }
  };
 
@@ -45,8 +45,8 @@ export const logoutUserOperation = () => async (dispatch, getState) => {
  try {
   const response = await logoutApi(authToken);
   dispatch(logoutUserAction(response.data));
-  // history.push("/");
  } catch (error) {
   dispatch(logoutUserActionError(error.message));
+  Notification("error");
  }
 };

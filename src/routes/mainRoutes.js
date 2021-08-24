@@ -75,4 +75,12 @@ export const mainRoutes = [
   isRestricted: true,
   isPrivate: false,
  },
+ {
+  name: "profile",
+  path: "/profile",
+  component: '',
+  exact: true,
+  isRestricted: false,
+  isPrivate: true,
+ },
 ];

@@ -9,6 +9,7 @@ import { authTokenSelector } from "../../redux/auth/authSelectors";
 
 const Main = () => {
  const token = useSelector(authTokenSelector);
+ 
  return (
   <>
    <MainContainer>

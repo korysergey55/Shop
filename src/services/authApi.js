@@ -1,12 +1,16 @@
 import axios from "axios";
 
-// const baseURL = "https://react-shop-5c360-default-rtdb.firebaseio.com/"; //korysergey55@gmail.com
-const BASE_URL = "https://criptoshop-62529-default-rtdb.firebaseio.com/"; //korysergeyDev@gmail.com
+//korysergeydev@gmail.com
+const BASE_URL = "https://criptoshop-62529-default-rtdb.firebaseio.com/"; 
+const EndpointRegistration = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${process.env.REACT_APP_API_KEY}`;
+const EndpointLogin = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${process.env.REACT_APP_API_KEY}`;
+
 
 export const registrationUserApi = async (inputFormState) => {
  try {
-  const response = await axios.post(`${BASE_URL}/users/signup.json`, {
+  const response = await axios.post(EndpointRegistration, {
    ...inputFormState,
+   returnSecureToken:true,
   });
   return response;
  } catch (error) {
@@ -16,8 +20,9 @@ export const registrationUserApi = async (inputFormState) => {
 
 export const loginUserApi = async (inputFormState) => {
  try {
-  const response = await axios.post(`${BASE_URL}/users/login.json`, {
+  const response = await axios.post(EndpointLogin, {
    ...inputFormState,
+   returnSecureToken: true,
   });
   return response;
  } catch (error) {
