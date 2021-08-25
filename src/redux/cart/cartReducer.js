@@ -1,4 +1,5 @@
 import { createReducer, combineReducers } from "@reduxjs/toolkit";
+import { logoutUserAction } from "../auth/authActions";
 import {
  addToCart,
  createOrder,
@@ -16,18 +17,19 @@ const cartItemsReducer = createReducer([], {
   ...state.filter((cartItem) => cartItem.id !== action.payload),
  ],
  [remuveAllFromCart]: () => [],
+ [logoutUserAction]: (state, action) => [],
 });
 
 const cartOrderReducer = createReducer(false, {
  [createOrder]: (state, action) => action.payload,
 });
 
-const cartTotalPriceReducer = createReducer(false, {
- [createOrder]: (state, action) =>
-  action.payload.reduce((acc, product) => {
+const cartTotalPriceOrder = createReducer(false, {
+ [createOrder]: (state, action) => action.payload
+ .reduce((acc, product) => {
    acc += Number(product.price);
    return acc;
-  }, 0),
+  }, 0)
 });
 
 const cartModalReducer = createReducer(false, {
@@ -46,7 +48,7 @@ const cartErrorReducer = createReducer("", {
 const cartReducer = combineReducers({
  items: cartItemsReducer,
  order: cartOrderReducer,
- total: cartTotalPriceReducer,
+ total: cartTotalPriceOrder,
  isModalOpen: cartModalReducer,
  loader: cartLoaderReducer,
  error: cartErrorReducer,

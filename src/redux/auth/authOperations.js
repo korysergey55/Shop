@@ -43,8 +43,8 @@ export const logoutUserOperation = () => async (dispatch, getState) => {
  const authToken = getState().auth.token;
 
  try {
-  const response = await logoutApi(authToken);
-  dispatch(logoutUserAction(response.data));
+  await logoutApi(authToken);
+  dispatch(logoutUserAction());
  } catch (error) {
   dispatch(logoutUserActionError(error.message));
   Notification("error");

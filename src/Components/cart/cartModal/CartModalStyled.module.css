@@ -13,7 +13,7 @@
 
 .Modal {
  position: relative;
- min-width: 550px;
+ min-width: 900px;
  min-height: 300px;
  max-width: calc(100vw - 48px);
  max-height: calc(100vh - 24px);
@@ -21,6 +21,7 @@
  padding: 15px;
  background-color: white;
  border-radius: 15px;
+ overflow-y: auto;
 }
 .closeModal {
  position: absolute;

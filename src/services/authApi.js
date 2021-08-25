@@ -33,7 +33,7 @@ export const loginUserApi = async (inputFormState) => {
 export const logoutApi = async (authToken) => {
  axios.defaults.headers.common["Authorization"] = `Bearer ${authToken}`;
  try {
-  const response = await axios.post(`${BASE_URL}/users/logout.json`);
+  const response = await axios.post(EndpointLogin, { returnSecureToken: true });
   return response;
  } catch (error) {
   console.log(error);

@@ -10,7 +10,7 @@ import {
 import { getProductWithIdSelector } from "../redux/products/productsSelectors";
 import { useDispatch, useSelector } from "react-redux";
 import { getProductByIdOperation } from "../redux/products/productsOperations";
-import { addToCart } from "../redux/cart/cartActions";
+import { addToCartOperation } from "../redux/cart/cartOperations";
 
 const ProductItemDetails = () => {
  const history = useHistory();
@@ -62,7 +62,7 @@ const ProductItemDetails = () => {
      </p>
      <div className="options">
       <button
-       onClick={() => dispatch(addToCart(productById))}
+       onClick={() => dispatch(addToCartOperation(productById))}
        className="addToCartButton"
       >
        Add to cart

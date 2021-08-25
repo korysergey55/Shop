@@ -10,7 +10,7 @@ import storage from "redux-persist/lib/storage";
 const persistCartConfig = {
  key: "cart",
  storage,
- whitelist: ["items", ],
+ whitelist: ["items"],
 };
 const persistAuthConfig = {
  key: "token",
@@ -19,8 +19,8 @@ const persistAuthConfig = {
 };
 
 const rootReducer = combineReducers({
- auth: authReducer,
-//   auth: persistReducer(persistAuthConfig, authReducer),
+ //  auth: authReducer,
+ auth: persistReducer(persistAuthConfig, authReducer),
  cart: persistReducer(persistCartConfig, cartReducer),
  products: productsReducer,
  filter: FilterReducer,

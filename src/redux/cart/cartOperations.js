@@ -1,10 +1,21 @@
 import Notification from "../../Components/notify";
 import { addToCart, remuveAllFromCart, setError } from "./cartActions";
+import { useSelector } from "react-redux";
+import { cartItemSelector } from "./cartSelectors";
 
 const addToCartOperation = (data) => async (dispatch) => {
+ //  const cartItems = useSelector(cartItemSelector);
+ //  if (
+ //   cartItems.filter((item) =>
+ //    item.name.toLowerCase().trim().includes(data.name.toLowerCase().trim())
+ //   )
+ //  ) {
+ //   console.log("exist");
+ //   return
+ //  }
  try {
-  await dispatch(addToCart(data));
   Notification("sucses");
+  await dispatch(addToCart(data));
  } catch (error) {
   Notification("danger");
   dispatch(setError(error));

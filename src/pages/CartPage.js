@@ -6,11 +6,14 @@ import CartModal from "../Components/cart/cartModal/CartModal";
 import CartOrder from "../Components/cart/cartOrder/CartOrder";
 import Section from "../Components/section/Section";
 import { createOrder } from "../redux/cart/cartActions";
-import { cartItemSelector, modalSelector } from "../redux/cart/cartSelectors";
+import {
+ cartItemSelector,
+ cartModalSelector,
+} from "../redux/cart/cartSelectors";
 
 const CartPage = () => {
  const dispatch = useDispatch();
- const openModal = useSelector(modalSelector);
+ const openModal = useSelector(cartModalSelector);
  const cartItems = useSelector(cartItemSelector);
  useEffect(() => {
   dispatch(createOrder(cartItems));
