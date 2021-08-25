@@ -1,10 +1,11 @@
 import { lazy } from "react";
 import Logo from "../Components/logo/Logo";
+import NotFoundComponent from "../Components/notFoundComponent/NotFoundComponent";
 
 export const mainRoutes = [
  {
   name: <Logo />,
-  path: "/",
+  path: "/shop",
   component: lazy(() => import("../pages/HomePage")),
   exact: true,
   isRestricted: false,
@@ -83,4 +84,11 @@ export const mainRoutes = [
   isRestricted: false,
   isPrivate: true,
  },
+//  {
+//   name: "notFound",
+//   exact: true,
+//   component: lazy(() => import("../Components/notFoundComponent/NotFoundComponent")),
+//   isPrivate: false,
+//   iisRestricted: false,
+//  },
 ];

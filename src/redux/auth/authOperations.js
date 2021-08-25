@@ -32,7 +32,7 @@ export const loginUserOperation =
   try {
    const response = await loginUserApi(InputFormState);
    dispatch(loginUserAction(response.data));
-   history.push("/");
+   history.push("/shop");
    Notification("loginSuccess");
   } catch (error) {
    dispatch(loginUserActionError(error.message));
