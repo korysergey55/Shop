@@ -1,10 +1,8 @@
 import axios from "axios";
 
 //korysergeydev@gmail.com
-const BASE_URL = "https://criptoshop-62529-default-rtdb.firebaseio.com/"; 
 const EndpointRegistration = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${process.env.REACT_APP_API_KEY}`;
 const EndpointLogin = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${process.env.REACT_APP_API_KEY}`;
-
 
 export const registrationUserApi = async (inputFormState) => {
  try {

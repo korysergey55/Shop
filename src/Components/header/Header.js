@@ -33,7 +33,8 @@ class Header extends Component {
 
  render() {
   const { width, breakPoint, isModalOpen } = this.state;
-  const history = this.state.history;
+//   const history = this.props.history;
+//   console.log(history);
   return (
    <HeaderContainer>
     <h2 className="headerTitle"> AppleMacShop</h2>
@@ -86,7 +87,7 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = (dispatch) => {
  return {
-  logoutUserOperation: (history) => dispatch(logoutUserOperation(history)),
+  logoutUserOperation: () => dispatch(logoutUserOperation()),
  };
 };
 

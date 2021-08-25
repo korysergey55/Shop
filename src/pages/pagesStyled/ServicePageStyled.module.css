@@ -6,3 +6,10 @@
  background-position: left;
  background-size: contain;
 }
+.ServicePagePageTitle {
+ margin-bottom: 20px;
+ font-size: 35px;
+ color: #638af3;
+ text-align: center;
+ text-shadow: 4px 4px 2px rgba(150, 150, 150, 0.48);
+}

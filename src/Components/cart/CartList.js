@@ -3,7 +3,7 @@ import styles from "./CartListStyled.module.css";
 import CartListItem from "./cartListItem/CartListItem";
 
 import { useDispatch, useSelector } from "react-redux";
-import { remuveAllFromCart, taggleModal } from "../../redux/cart/cartActions";
+import { taggleModal } from "../../redux/cart/cartActions";
 import {
  cartItemSelector,
  cartTotalPricelSelector,

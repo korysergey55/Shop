@@ -15,20 +15,18 @@ const PhoneList = () => {
  );
 
  useEffect(() => {
-  dispatch(getPhones);
+  const getPhones = async () => {
+   const response = await getAllAdvByCategoryApi("phones");
+   if (response) {
+    const phonesList = Object.keys(response).map((key) => ({
+     id: key,
+     ...response[key],
+    }));
+    dispatch(setPhones(phonesList));
+   }
+  };
+  getPhones();
  }, [dispatch]);
-
- const getPhones = async () => {
-  const response = await getAllAdvByCategoryApi("phones");
-
-  if (response) {
-   const phonesList = Object.keys(response).map((key) => ({
-    id: key,
-    ...response[key],
-   }));
-   dispatch(setPhones(phonesList));
-  }
- };
 
  return (
   <PhoneListContainer>

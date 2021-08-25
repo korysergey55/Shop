@@ -1,7 +1,7 @@
 import Notification from "../../Components/notify";
 import { addToCart, remuveAllFromCart, setError } from "./cartActions";
-import { useSelector } from "react-redux";
-import { cartItemSelector } from "./cartSelectors";
+// import { useSelector } from "react-redux";
+// import { cartItemSelector } from "./cartSelectors";
 
 const addToCartOperation = (data) => async (dispatch) => {
  //  const cartItems = useSelector(cartItemSelector);

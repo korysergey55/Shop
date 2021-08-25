@@ -45,6 +45,7 @@ export const logoutUserOperation = () => async (dispatch, getState) => {
  try {
   await logoutApi(authToken);
   dispatch(logoutUserAction());
+//    history.push("/login");
  } catch (error) {
   dispatch(logoutUserActionError(error.message));
   Notification("error");
