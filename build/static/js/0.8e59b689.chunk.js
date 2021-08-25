@@ -1,2 +1,0 @@
-(this.webpackJsonplesson1=this.webpackJsonplesson1||[]).push([[0],{85:function(s,e,n){"use strict";n.r(e);n(0);var t=n(1);e.default=function(){return Object(t.jsx)("h2",{children:"AuthPage"})}}}]);
-//# sourceMappingURL=0.8e59b689.chunk.js.map

@@ -9,7 +9,7 @@ const HeaderList = ({ route, token, hideModal }) => {
  const cartItemsLength = useSelector(cartItemLengthSelector);
  return (
   <HeaderNavigation>
-   {!route.isPrivate && !route.isRestricted &&  (
+   {!route.isPrivate && !route.isRestricted && (
     <li className="navigationListItem" key={route.path}>
      <NavLink
       to={route.path}
@@ -27,8 +27,7 @@ const HeaderList = ({ route, token, hideModal }) => {
      </NavLink>
     </li>
    )}
-
-   {!route.isPrivate && route.isRestricted && !token && (
+   {route.isPrivate && token && (
     <li className="navigationListItem" key={route.path}>
      <NavLink
       to={route.path}
@@ -46,7 +45,7 @@ const HeaderList = ({ route, token, hideModal }) => {
      </NavLink>
     </li>
    )}
-   {route.isPrivate && !route.isRestricted && token && (
+   {!token && route.isRestricted && !route.isPrivate && (
     <li className="navigationListItem" key={route.path}>
      <NavLink
       to={route.path}

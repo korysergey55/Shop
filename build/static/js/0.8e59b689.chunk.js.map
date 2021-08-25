@@ -1,1 +1,0 @@
-{"version":3,"sources":["pages/AuthPage.js"],"names":["AuthPage"],"mappings":"mGAAA,uBAKeA,UAJE,WACf,OAAO","file":"static/js/0.8e59b689.chunk.js","sourcesContent":["import React from \"react\";\r\nconst AuthPage = () => {\r\n  return <h2>AuthPage</h2>;\r\n};\r\n\r\nexport default AuthPage;\r\n"],"sourceRoot":""}
