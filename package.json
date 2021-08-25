@@ -2,7 +2,7 @@
   "name": "lesson1",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://korysergey55.github.io/shop",
+  "homepage": "https://korysergey55.github.io/",
   "dependencies": {
     "@reduxjs/toolkit": "^1.6.0",
     "@testing-library/jest-dom": "^5.13.0",

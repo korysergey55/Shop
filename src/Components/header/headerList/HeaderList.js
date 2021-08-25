@@ -45,7 +45,7 @@ const HeaderList = ({ route, token, hideModal }) => {
      </NavLink>
     </li>
    )}
-   {!token && route.isRestricted && !route.isPrivate && (
+   {!route.isPrivate && route.isRestricted && !token && (
     <li className="navigationListItem" key={route.path}>
      <NavLink
       to={route.path}
