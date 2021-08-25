@@ -46,6 +46,21 @@ const Notification = (typeNotification) => {
    },
   });
  }
+ if (typeNotification === "logoutSuccess") {
+  return store.addNotification({
+   title: "Goodbay",
+   message: "You was secsesful Logout! See you next time",
+   type: "warning",
+   insert: "top",
+   container: "top-right",
+   animationIn: ["animate__animated", "animate__fadeIn"],
+   animationOut: ["animate__animated", "animate__fadeOut"],
+   dismiss: {
+    duration: 4000,
+    onScreen: false,
+   },
+  });
+ }
  if (typeNotification === "deleteAllFromCart") {
   return store.addNotification({
    title: "deleted!",

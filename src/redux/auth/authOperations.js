@@ -13,6 +13,7 @@ import {
 } from "./authActions";
 import Notification from "../../Components/notify";
 
+
 export const registrationUserOperation =
  (InputFormState, history) => async (dispatch) => {
   try {
@@ -45,7 +46,8 @@ export const logoutUserOperation = () => async (dispatch, getState) => {
  try {
   await logoutApi(authToken);
   dispatch(logoutUserAction());
-//    history.push("/login");
+  Notification("logoutSuccess");
+  
  } catch (error) {
   dispatch(logoutUserActionError(error.message));
   Notification("error");

@@ -84,12 +84,10 @@ class Header extends Component {
 const mapStateToProps = (state, ownProps) => ({
  token: state.auth.token,
 });
+const mapDispatchToProps = {
+ logoutUserOperation,
+}
 
-const mapDispatchToProps = (dispatch) => {
- return {
-  logoutUserOperation: () => dispatch(logoutUserOperation()),
- };
-};
 
 // const mapDispatchToProps = {
 //  logoutUserOperation,
