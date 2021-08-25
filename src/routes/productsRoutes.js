@@ -40,7 +40,7 @@ export const productsRoutes = [
  {
   name: "AppleWatch",
   path: "/watch",
-  component: "AppleWatch",
+  component: "",
   exact: true,
   isLink: true,
   icon: <AppleWatchIcon />,
@@ -48,7 +48,7 @@ export const productsRoutes = [
  {
   name: "AirPods",
   path: "/pods",
-  component: "AirPods",
+  component: "",
   exact: true,
   isLink: true,
   icon: <AirPodsIcon />,

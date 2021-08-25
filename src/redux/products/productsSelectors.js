@@ -8,8 +8,5 @@ export const getProductWithIdSelector = (state) => state.products.productWithId;
 
 export const getLoaderSelector = (state) => state.products.loader;
 
-export const getProductsFilterSelector = (state, category ="phones") =>
- state.products.items[category].filter((product) =>
-  product.name?.toLowerCase().includes(state.filter.filter.toLowerCase())
- );
-
+export const getProductsSelector = (state, category) =>
+ state.products.items[category];

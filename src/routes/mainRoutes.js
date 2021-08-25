@@ -21,7 +21,7 @@ export const mainRoutes = [
  {
   name: "Accessories",
   path: "/accessories",
-  component: "Accessories",
+  component: "",
   exact: false,
   isRestricted: false,
   isPrivate: false,
@@ -35,6 +35,14 @@ export const mainRoutes = [
   isPrivate: true,
  },
  {
+  name: "Contacts",
+  path: "/contacts",
+  component: "",
+  exact: false,
+  isRestricted: false,
+  isPrivate: false,
+ },
+ {
   name: "Cart",
   path: "/cart",
   component: lazy(() => import("../pages/CartPage")),
@@ -42,14 +50,6 @@ export const mainRoutes = [
   isRestricted: false,
   isPrivate: false,
   cartLength: null,
- },
- {
-  name: "Contacts",
-  path: "/contacts",
-  component: "Contacts",
-  exact: false,
-  isRestricted: false,
-  isPrivate: false,
  },
  {
   name: "Administration",
@@ -78,7 +78,7 @@ export const mainRoutes = [
  {
   name: "profile",
   path: "/profile",
-  component: '',
+  component: "",
   exact: true,
   isRestricted: false,
   isPrivate: true,

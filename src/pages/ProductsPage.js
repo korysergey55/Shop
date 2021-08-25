@@ -1,25 +1,30 @@
 import React, { Suspense, useEffect } from "react";
 import styles from "./pagesStyled/ProductsPageStyled.module.css";
-import Filter from "../Components/filter/Filter"
+import Filter from "../Components/filter/Filter";
 
 import { productsRoutes } from "../routes/productsRoutes";
-import { NavLink, Route, Switch, useHistory, useRouteMatch } from "react-router-dom";
+import {
+ NavLink,
+ Route,
+ Switch,
+ useHistory,
+ useRouteMatch,
+} from "react-router-dom";
 
 const ProductsPage = () => {
-
  const history = useHistory();
  const match = useRouteMatch();
 
  useEffect(() => {
   history.push(match.path + "/phones");
- }, [history]);
+ }, [history, match.path]);
 
  return (
-   <div className={styles.ProductsPageContainer}>
+  <div className={styles.ProductsPageContainer}>
    <ul className={styles.navigationList}>
     {productsRoutes.map(
      (route) =>
-     route.isLink && (
+      route.isLink && (
        <li className={styles.navigationListItem} key={route.path}>
         <NavLink
          to={match.url + route.path}
@@ -33,9 +38,9 @@ const ProductsPage = () => {
         </NavLink>
        </li>
       )
-      )}
+    )}
    </ul>
-      <Filter/>
+   <Filter />
 
    <Suspense fallback={<h2>...loading</h2>}>
     <Switch>

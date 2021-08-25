@@ -2,10 +2,11 @@ import React from "react";
 import { PhoneListContainer } from "./PhoneListStyled";
 import PhoneListItem from "./phoneListItem/PhoneListItem";
 import { getAllAdvByCategoryApi } from "../../services/api";
+
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { setPhones } from "../../redux/products/productsActions";
-import { getProductsFilterSelector } from "../../redux/products/productsSelectors";
+import { getProductsFilterSelector } from "../../redux/filter/filterSelectors";
 
 const PhoneList = () => {
  const dispatch = useDispatch();

@@ -19,16 +19,17 @@ const ProductItemDetails = () => {
  const dispatch = useDispatch();
  const productById = useSelector(getProductWithIdSelector);
 
+ const category = match.params.category;
+ const productId = match.params.productID;
+
  useEffect(() => {
-  dispatch(
-   getProductByIdOperation(match.params.category, match.params.productID)
-  );
- }, [dispatch, match,]);
+  dispatch(getProductByIdOperation(category, productId));
+ }, [dispatch, category, productId]);
 
  const goBack = () => {
   if (location.state) {
    history.push(location.state.from);
-  } else history.push(`/products/${match.params.category}`);
+  } else history.push(`/products/${category}`);
  };
 
  return (
