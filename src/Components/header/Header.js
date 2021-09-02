@@ -33,8 +33,8 @@ class Header extends Component {
 
  render() {
   const { width, breakPoint, isModalOpen } = this.state;
-//   const history = this.props.history;
-//   console.log(history);
+  //   const history = this.props.history;
+  //   console.log(history);
   return (
    <HeaderContainer>
     <h2 className="headerTitle"> AppleMacShop</h2>
@@ -61,7 +61,7 @@ class Header extends Component {
        <li className="navigationListItem">
         <NavLink
          onClick={this.props.logoutUserOperation}
-         to="logout"
+         to="login"
          className="navigationListItemAnchor"
          activeClassName="navigationListItemActive"
         >
@@ -86,8 +86,7 @@ const mapStateToProps = (state, ownProps) => ({
 });
 const mapDispatchToProps = {
  logoutUserOperation,
-}
-
+};
 
 // const mapDispatchToProps = {
 //  logoutUserOperation,

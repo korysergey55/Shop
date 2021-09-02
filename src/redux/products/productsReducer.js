@@ -17,10 +17,7 @@ const productItemsReducer = createReducer(
   [setPhones]: (state, action) => ({ ...state, phones: [...action.payload] }),
   [setLaptops]: (state, action) => ({ ...state, laptops: [...action.payload] }),
   [setIpads]: (state, action) => ({ ...state, ipads: [...action.payload] }),
-  [setAppleWatches]: (state, action) => ({
-   ...state,
-   appleWatches: [...action.payload],
-  }),
+  [setAppleWatches]: (state, action) => ({...state, appleWatches: [...action.payload],}),
   [setAirPods]: (state, action) => ({ ...state, airPods: [...action.payload] }),
  }
 );

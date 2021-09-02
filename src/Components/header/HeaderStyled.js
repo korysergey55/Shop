@@ -1,5 +1,4 @@
 import styled from "styled-components";
-
 export const HeaderContainer = styled.header`
  height: 60px;
  padding: 0 20px;

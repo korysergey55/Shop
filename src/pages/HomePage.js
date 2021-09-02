@@ -1,8 +1,9 @@
 import React from "react";
 import styles from "./pagesStyled/HomePageStyled.module.css";
-import { Player, ControlBar, BigPlayButton } from "video-react";
+import { Player, ControlBar, BigPlayButton, Shortcut } from "video-react";
 
 const HomePage = () => {
+ 
  return (
   <>
    <h2 className={styles.homePageTitle}> Apple Shop</h2>
@@ -11,12 +12,14 @@ const HomePage = () => {
    </h2>
    <Player
     autoPlay
+    repeat
     playsInline
     poster="/assets/poster.png"
     src="https://www.apple.com/105/media/ww/iphone-12/2020/7f5b7de7-9f8c-41eb-bf3b-f294773108e6/anim/hero-purple/non-5g/large.mp4"
    >
     <ControlBar disableCompletely={true} />
     <BigPlayButton position="center" />
+    <Shortcut clickable={false} />
    </Player>
    <h2 className={styles.homePageTitleProduct}>Грандіозний стрибок уперед.</h2>
 

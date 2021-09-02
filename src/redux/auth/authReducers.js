@@ -11,6 +11,7 @@ import {
 const registerReducer = createReducer(null, {
  [registerUserAction]: (state, action) => action.payload,
 });
+
 const tokenReducer = createReducer(null, {
  [loginUserAction]: (state, action) => action.payload.idToken,
  [logoutUserAction]: (state, action) => null,
