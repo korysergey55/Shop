@@ -1,35 +1,47 @@
 import Notification from "../../Components/notify";
-import { addToCart, remuveAllFromCart, setError } from "./cartActions";
-// import { useSelector } from "react-redux";
-// import { cartItemSelector } from "./cartSelectors";
+import { addToCart, remuveAllFromCart, setError, taggleModal } from "./cartActions";
 
-const addToCartOperation = (data) => async (dispatch) => {
- //  const cartItems = useSelector(cartItemSelector);
- //  if (
- //   cartItems.filter((item) =>
- //    item.name.toLowerCase().trim().includes(data.name.toLowerCase().trim())
- //   )
- //  ) {
- //   console.log("exist");
- //   return
- //  }
- try {
-  Notification("sucses");
-  await dispatch(addToCart(data));
- } catch (error) {
-  Notification("danger");
-  dispatch(setError(error));
- }
+export const addToCartOperation = (data) => async (dispatch) => {
+  try {
+    const response = await dispatch(addToCart(data));
+    if (response) {
+      Notification("addProductToCartSuccess");
+    }
+  } catch (error) {
+    Notification("danger");
+    dispatch(setError(error));
+  }
 };
 
-const remuveAllFromCartOperation = (data) => async (dispatch) => {
- try {
-  await dispatch(remuveAllFromCart());
-  Notification("deleteAllFromCart");
- } catch (error) {
-  Notification("danger");
-  dispatch(setError(error));
- }
+export const bayNowOperation = (history) => async (dispatch) => {
+  try {
+    dispatch(taggleModal())
+    history.push('/cart')
+  }
+  catch (error) {
+    Notification("danger");
+    dispatch(setError(error));
+  }
 };
 
-export { addToCartOperation, remuveAllFromCartOperation };
+export const createOrderOperation = (history) => async (dispatch) => {
+  try {
+    dispatch(taggleModal())
+    history.push('/cart')
+  }
+  catch (error) {
+    Notification("danger");
+    dispatch(setError(error));
+  }
+};
+
+
+export const remuveAllFromCartOperation = (data) => async (dispatch) => {
+  try {
+    await dispatch(remuveAllFromCart());
+    Notification("deleteAllFromCart");
+  } catch (error) {
+    Notification("danger");
+    dispatch(setError(error));
+  }
+};

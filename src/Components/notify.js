@@ -31,6 +31,21 @@ const Notification = (typeNotification) => {
       },
     });
   }
+  if (typeNotification === "removeFromCart") {
+    return store.addNotification({
+      title: "Товар удален из корзины",
+      message: "Товар удален из корзины",
+      type: "success",
+      insert: "top",
+      container: "top-right",
+      animationIn: ["animate__animated", "animate__fadeIn"],
+      animationOut: ["animate__animated", "animate__fadeOut"],
+      dismiss: {
+        duration: 3000,
+        onScreen: false,
+      },
+    });
+  }
   if (typeNotification === "loginSuccess") {
     return store.addNotification({
       title: "Welcome",

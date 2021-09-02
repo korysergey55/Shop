@@ -18,7 +18,7 @@ const PhoneListItem = ({ phone }) => {
 
  const addProduct = () => {
   dispatch(addToCart(phone));
-  Notification("success");
+   Notification("addProductToCartSuccess");
  };
 
  const openDetails = () => {

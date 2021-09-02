@@ -19,7 +19,7 @@ const LaptopListItem = ({ laptop }) => {
 
  const addProduct = () => {
   dispatch(addToCart(laptop));
-  Notification("success");
+   Notification("addProductToCartSuccess");
  };
 
  const openDetails = () => {

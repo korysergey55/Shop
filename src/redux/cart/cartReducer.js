@@ -1,57 +1,60 @@
 import { createReducer, combineReducers } from "@reduxjs/toolkit";
 import { logoutUserAction } from "../auth/authActions";
 import {
- addToCart,
- createOrder,
- removeFromCartByID,
- remuveAllFromCart,
- taggleModal,
- resetError,
- setError,
- setLoader,
+  addToCart,
+  createOrder,
+  removeFromCartByID,
+  remuveAllFromCart,
+  taggleModal,
+  resetError,
+  setError,
+  setLoader,
 } from "./cartActions";
 
 const cartItemsReducer = createReducer([], {
- [addToCart]: (state, action) => [...state, action.payload],
- [removeFromCartByID]: (state, action) => [
-  ...state.filter((cartItem) => cartItem.id !== action.payload),
- ],
- [remuveAllFromCart]: () => [],
- [logoutUserAction]: (state, action) => [],
+  [addToCart]: (state, action) =>
+    [...state, action.payload],
+  // state.map((item) => item === action.payload ? [...state, action.payload]
+  //   : [...state, action.payload]),
+  [removeFromCartByID]: (state, action) => [
+    ...state.filter((cartItem) => cartItem.id !== action.payload),
+  ],
+  [remuveAllFromCart]: () => [],
+  [logoutUserAction]: (state, action) => [],
 });
 
 const cartOrderReducer = createReducer(false, {
- [createOrder]: (state, action) => action.payload,
+  [createOrder]: (state, action) => action.payload,
 });
 
 const cartTotalPriceOrder = createReducer(false, {
- [createOrder]: (state, action) => action.payload
- .reduce((acc, product) => {
-   acc += Number(product.price);
-   return acc;
-  }, 0)
+  [createOrder]: (state, action) => action.payload
+    .reduce((acc, product) => {
+      acc += Number(product.price);
+      return acc;
+    }, 0)
 });
 
 const cartModalReducer = createReducer(false, {
- [taggleModal]: (state, action) => !state,
+  [taggleModal]: (state, action) => !state,
 });
 
 const cartLoaderReducer = createReducer(false, {
- [setLoader]: (state) => !state,
+  [setLoader]: (state) => !state,
 });
 
 const cartErrorReducer = createReducer("", {
- [setError]: (_, action) => action.payload,
- [resetError]: () => "",
+  [setError]: (_, action) => action.payload,
+  [resetError]: () => "",
 });
 
 const cartReducer = combineReducers({
- items: cartItemsReducer,
- order: cartOrderReducer,
- total: cartTotalPriceOrder,
- isModalOpen: cartModalReducer,
- loader: cartLoaderReducer,
- error: cartErrorReducer,
+  items: cartItemsReducer,
+  order: cartOrderReducer,
+  total: cartTotalPriceOrder,
+  isModalOpen: cartModalReducer,
+  loader: cartLoaderReducer,
+  error: cartErrorReducer,
 });
 
 export default cartReducer;

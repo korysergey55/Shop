@@ -3,7 +3,14 @@
  font-weight: 700;
  color: #2b63ff;
 }
-
+.cartOrderTitle{
+  margin: 0 auto;
+ margin-bottom: 10px;
+ font-size: 25px;
+ font-weight: 700;
+ text-align: center;
+ color: #2b63ff;
+}
 .orderButton {
  margin-top: 15px;
  min-width: 150px;
