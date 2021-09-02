@@ -2,7 +2,6 @@ import React from "react";
 import { AdvFormContainer } from "./AdvFormStyled";
 import { createNewAdvApi } from "../../services/api";
 import { useState } from "react";
-import { store } from "react-notifications-component";
 import Notification from "../notify";
 
 const productCategories = [

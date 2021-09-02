@@ -6,65 +6,55 @@ import { useSelector } from "react-redux";
 import { cartItemLengthSelector } from "../../../redux/cart/cartSelectors";
 
 const HeaderList = ({ route, token, hideModal }) => {
- const cartItemsLength = useSelector(cartItemLengthSelector);
- return (
-  <HeaderNavigation>
-   {!route.isPrivate && !route.isRestricted && (
-    <li className="navigationListItem" key={route.path}>
-     <NavLink
-      to={route.path}
-      exact={route.exact}
-      className="navigationListItemAnchor"
-      activeClassName="navigationListItemActive"
-      onClick={hideModal}
-     >
-      {route.name}
-      {route.name === "Cart" ? (
-       <span className="cartLength">{cartItemsLength}</span>
-      ) : (
-       ""
+  const cartItemsLength = useSelector(cartItemLengthSelector);
+  return (
+    <HeaderNavigation>
+      {!route.isPrivate && !route.isRestricted && (
+        <li className="navigationListItem" key={route.path}>
+          <NavLink
+            to={route.path}
+            exact={route.exact}
+            className="navigationListItemAnchor"
+            activeClassName="navigationListItemActive"
+            onClick={hideModal}
+          >
+            {route.name}
+            {route.path === "/cart" ? (
+              <span className="cartLength">{cartItemsLength}</span>
+            ) : (
+              ""
+            )}
+          </NavLink>
+        </li>
       )}
-     </NavLink>
-    </li>
-   )}
-   {route.isPrivate && token && (
-    <li className="navigationListItem" key={route.path}>
-     <NavLink
-      to={route.path}
-      exact={route.exact}
-      className="navigationListItemAnchor"
-      activeClassName="navigationListItemActive"
-      onClick={hideModal}
-     >
-      {route.name}
-      {route.name === "Cart" ? (
-       <span className="cartLength">{cartItemsLength}</span>
-      ) : (
-       ""
+      {route.isPrivate && token && (
+        <li className="navigationListItem" key={route.path}>
+          <NavLink
+            to={route.path}
+            exact={route.exact}
+            className="navigationListItemAnchor"
+            activeClassName="navigationListItemActive"
+            onClick={hideModal}
+          >
+            {route.name}
+          </NavLink>
+        </li>
       )}
-     </NavLink>
-    </li>
-   )}
-   {!route.isPrivate && route.isRestricted && !token && (
-    <li className="navigationListItem" key={route.path}>
-     <NavLink
-      to={route.path}
-      exact={route.exact}
-      className="navigationListItemAnchor"
-      activeClassName="navigationListItemActive"
-      onClick={hideModal}
-     >
-      {route.name}
-      {route.name === "Cart" ? (
-       <span className="cartLength">{cartItemsLength}</span>
-      ) : (
-       ""
+      {!route.isPrivate && route.isRestricted && !token && (
+        <li className="navigationListItem" key={route.path}>
+          <NavLink
+            to={route.path}
+            exact={route.exact}
+            className="navigationListItemAnchor"
+            activeClassName="navigationListItemActive"
+            onClick={hideModal}
+          >
+            {route.name}
+          </NavLink>
+        </li>
       )}
-     </NavLink>
-    </li>
-   )}
-  </HeaderNavigation>
- );
+    </HeaderNavigation>
+  );
 };
 
 export default withRouter(HeaderList);

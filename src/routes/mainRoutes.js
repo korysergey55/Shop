@@ -1,4 +1,5 @@
 import { lazy } from "react";
+import CartIcon from "../Components/cart/cartIcon/CartIcon";
 import Logo from "../Components/logo/Logo";
 import NotFoundComponent from "../Components/notFoundComponent/NotFoundComponent";
 
@@ -44,7 +45,7 @@ export const mainRoutes = [
   isPrivate: false,
  },
  {
-  name: "Cart",
+   name: <CartIcon />,
   path: "/cart",
   component: lazy(() => import("../pages/CartPage")),
   exact: true,
