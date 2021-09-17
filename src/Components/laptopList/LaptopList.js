@@ -1,5 +1,5 @@
 import React from "react";
-import { LaptopListContainer } from "./LaptopListStyled";
+import { LaptopUl } from "./LaptopListStyled";
 import LaptopListItem from "./laptopListItem/LaptopListItem";
 import { getAllAdvByCategoryApi } from "../../services/api";
 
@@ -28,11 +28,11 @@ const LaptopList = () => {
  }, [dispatch]);
 
  return (
-  <LaptopListContainer>
+  <LaptopUl>
    {laptops?.map((laptop) => (
     <LaptopListItem laptop={laptop} key={laptop.id} />
    ))}
-  </LaptopListContainer>
+  </LaptopUl>
  );
 };
 

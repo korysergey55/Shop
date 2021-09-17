@@ -1,5 +1,5 @@
 import React from "react";
-import { ListItemContainer } from "./PhoneListItemStyled";
+import { PhoneLi } from "./PhoneListItemStyled";
 import { useDispatch} from "react-redux";
 import {
  useHistory,
@@ -29,7 +29,7 @@ const PhoneListItem = ({ phone }) => {
  };
 
  return (
-  <ListItemContainer>
+  <PhoneLi>
    <div className="content">
     <h3 className="listItemTitle">{phone.name}</h3>
     <div className="imageWrapper">
@@ -63,7 +63,7 @@ const PhoneListItem = ({ phone }) => {
      </button>
     </div>
    </div>
-  </ListItemContainer>
+  </PhoneLi>
  );
 };
 

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const LaptopUl = styled.ul`
+export const IpadUl = styled.ul`
   list-style: none;
   display: flex;
   flex-wrap: wrap;

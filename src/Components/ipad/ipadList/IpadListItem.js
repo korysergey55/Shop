@@ -1,6 +1,5 @@
 import React from "react";
-import { LaptopLi } from "./LaptopListItemStyled";
-
+import { IpadLi} from './IpadListItemStyled'
 import { useDispatch } from "react-redux";
 import {
   useHistory,
@@ -11,46 +10,46 @@ import {
 import { addToCart } from "../../../redux/cart/cartActions";
 import Notification from "../../notify";
 
-const LaptopListItem = ({ laptop }) => {
+const IpadListItem = ({ ipad }) => {
   const dispatch = useDispatch();
   const location = useLocation();
   const history = useHistory();
   const match = useRouteMatch();
 
   const addProduct = () => {
-    dispatch(addToCart(laptop));
+    dispatch(addToCart(ipad));
     Notification("addProductToCartSuccess");
   };
 
   const openDetails = () => {
     history.push({
-      pathname: `${match.path}/${laptop.id}`,
+      pathname: `${match.path}/${ipad.id}`,
       state: { from: location.pathname },
     });
   };
 
   return (
-    <LaptopLi>
+    <IpadLi >
       <div className="content">
-        <h3 className="listItemTitle">{laptop.name}</h3>
+        <h3 className="listItemTitle">{ipad.name}</h3>
         <div className="imageWrapper">
           <img
-            src={laptop.image}
-            alt={laptop.name}
+            src={ipad.image}
+            alt={ipad.name}
             className="listItemImage"
             onClick={openDetails}
           />
         </div>
         <p className="priceTitle">
-          {laptop.isSale ? (
+          {ipad.isSale ? (
             <>
               <span className="withSalePrice">
-                {laptop.price}</span>{" "}
+                {ipad.price}</span>{" "}
               <span className="withoutSalePrice">
-                {(laptop.price - laptop.price * 10).toFixed(0)}</span>
+                {(ipad.price - ipad.price * 10).toFixed(0)}</span>
             </>
           ) : (
-            <span className="withoutSalePrice">{laptop.price}</span>
+            <span className="withoutSalePrice">{ipad.price}</span>
           )}
           {" UAH"}
         </p>
@@ -63,8 +62,8 @@ const LaptopListItem = ({ laptop }) => {
           </button>
         </div>
       </div>
-    </LaptopLi>
+    </IpadLi>
   );
 };
 
-export default withRouter(LaptopListItem);
+export default withRouter(IpadListItem);

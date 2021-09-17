@@ -1,5 +1,5 @@
 import React from "react";
-import { PhoneListContainer } from "./PhoneListStyled";
+import { PhoneUl } from "./PhoneListStyled";
 import PhoneListItem from "./phoneListItem/PhoneListItem";
 import { getAllAdvByCategoryApi } from "../../services/api";
 
@@ -29,11 +29,11 @@ const PhoneList = () => {
  }, [dispatch]);
 
  return (
-  <PhoneListContainer>
+   <PhoneUl>
    {phones?.map((phone) => (
     <PhoneListItem phone={phone} key={phone.id} />
    ))}
-  </PhoneListContainer>
+  </PhoneUl>
  );
 };
 export default PhoneList;

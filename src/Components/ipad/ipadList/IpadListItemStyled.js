@@ -1,8 +1,10 @@
 import styled from "styled-components";
 
-export const PhoneLi = styled.li`
+export const IpadLi = styled.li`
  width: 100%;
  padding: 20px;
+ max-width: 400px;
+ height: 298px;
 
  .content {
   border-radius: 14px;
@@ -15,7 +17,6 @@ export const PhoneLi = styled.li`
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
    1px 4px 6px rgba(0, 0, 0, 0.16);
  }
-
  .listItemTitle {
   font-size: 16px;
   text-align: center;

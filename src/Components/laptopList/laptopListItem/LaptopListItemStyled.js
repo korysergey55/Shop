@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ListItemContainer = styled.li`
+export const LaptopLi = styled.li`
  width: 100%;
  padding: 20px;
 
