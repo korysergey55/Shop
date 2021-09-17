@@ -139,7 +139,7 @@ class AuthForm extends Component {
               onChange={this.onHandleChange}
               required
             >
-              {formOptions.map((option) => (
+              {/* {formOptions.map((option) => (
                 <option
                   value={option.value}
                   name={option.name}
@@ -147,9 +147,9 @@ class AuthForm extends Component {
                 >
                   {option.countryName}
                 </option>
-              ))}
-              {/* <option value="Ukraine" name="country">Ukraine</option>
-       <option value="Poland" name="country">Poland</option> */}
+              ))} */}
+              <option value="Ukraine" name="country">Ukraine</option>
+              <option value="Poland" name="country">Poland</option>
             </select>
 
             <label className={styles.labelName}>

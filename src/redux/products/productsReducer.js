@@ -21,8 +21,7 @@ const productItemsReducer = createReducer(
   [setAirPods]: (state, action) => ({ ...state, airPods: [...action.payload] }),
  }
 );
-const productWithIdReducer = createReducer(
- { setproductWithId: [] },
+const productWithIdReducer = createReducer([],
  { [setProductWithId]: (state, action) => ({ ...action.payload }) }
 );
 

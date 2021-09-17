@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://korysergey55.github.io/shop",
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.4",
     "@reduxjs/toolkit": "^1.6.1",
     "@testing-library/jest-dom": "^5.13.0",
     "@testing-library/react": "^11.2.7",

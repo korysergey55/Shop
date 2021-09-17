@@ -9,7 +9,7 @@ export const productsRoutes = [
  {
   name: "ProductDetails",
   path: "/:category/:productID",
-  component: lazy(() => import("../pages/ProductItemDetails")),
+  component: lazy(() => import("../Components/productDeteils/ProductItemDetails")),
   exact: false,
   isLink: false,
  },

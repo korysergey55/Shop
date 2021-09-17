@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { ProductDetailsContainer } from "./pagesStyled/ProductItemDetailsStyled";
+import { ProductDetailsContainer } from "../../pages/pagesStyled/ProductItemDetailsStyled";
 
 import {
   useHistory,
@@ -7,10 +7,10 @@ import {
   useRouteMatch,
   withRouter,
 } from "react-router-dom";
-import { getProductWithIdSelector } from "../redux/products/productsSelectors";
+import { getProductWithIdSelector } from "../../redux/products/productsSelectors";
 import { useDispatch, useSelector } from "react-redux";
-import { getProductByIdOperation } from "../redux/products/productsOperations";
-import { addToCartOperation, bayNowOperation } from "../redux/cart/cartOperations";
+import { getProductByIdOperation } from "../../redux/products/productsOperations";
+import { addToCartOperation, bayNowOperation } from "../../redux/cart/cartOperations";
 
 
 const ProductItemDetails = () => {
@@ -53,8 +53,8 @@ const ProductItemDetails = () => {
           <p className="priceTitle">
             {productById.isSale ? (
               <>
-                <span className="withSalePrice">{productById.price - 1000}</span>{" "}
-                <span className="withoutSalePrice">{productById.price}</span>
+                <span className="withSalePrice">{productById.price}</span>
+                <span className=" withoutSalePrice">{(productById.price - productById.price / 10).toFixed(0)}</span>{" "}
               </>
             ) : (
               <span className="withoutSalePrice">{productById.price}</span>
@@ -68,7 +68,8 @@ const ProductItemDetails = () => {
             >
               Add to cart
             </button>
-            <button onClick={() => dispatch(bayNowOperation(history))} className="bayNow">
+            <button onClick={() => dispatch(bayNowOperation(history, productById))}
+              className="bayNow">
               Bay Now
             </button>
           </div>

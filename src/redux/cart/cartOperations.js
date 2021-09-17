@@ -13,8 +13,9 @@ export const addToCartOperation = (data) => async (dispatch) => {
   }
 };
 
-export const bayNowOperation = (history) => async (dispatch) => {
+export const bayNowOperation = (history, productById) => async (dispatch) => {
   try {
+    dispatch(addToCart(productById))
     dispatch(taggleModal())
     history.push('/cart')
   }

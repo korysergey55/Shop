@@ -1,7 +1,7 @@
 import React from "react";
 import { SectionContainer } from "./SectionStyled";
 
-const Section = ({ children, title: myTitle, isMobiles }) => {
+const Section = ({ children, title: myTitle, }) => {
   return (
     <SectionContainer>
       <h2 className='sectionTitle'>{myTitle.toUpperCase()}</h2>
@@ -11,7 +11,3 @@ const Section = ({ children, title: myTitle, isMobiles }) => {
 };
 
 export default Section;
-
-Section.defaultProps = {
-  isMobiles: false,
-};
