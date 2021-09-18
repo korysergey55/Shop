@@ -1,44 +1,44 @@
 import { createReducer, combineReducers } from "@reduxjs/toolkit";
 import {
- setPhones,
- setLaptops,
- setIpads,
- setAppleWatches,
- setAirPods,
- setProductWithId,
- setError,
- resetError,
- setLoader,
+  setPhones,
+  setLaptops,
+  setIpads,
+  setAppleWatches,
+  setAirPods,
+  setProductWithId,
+  setError,
+  resetError,
+  setLoader,
 } from "./productsActions";
 
 const productItemsReducer = createReducer(
- { phones: [], laptops: [], ipads: [], appleWatches: [], airPods: [] },
- {
-  [setPhones]: (state, action) => ({ ...state, phones: [...action.payload] }),
-  [setLaptops]: (state, action) => ({ ...state, laptops: [...action.payload] }),
-  [setIpads]: (state, action) => ({ ...state, ipads: [...action.payload] }),
-  [setAppleWatches]: (state, action) => ({...state, appleWatches: [...action.payload],}),
-  [setAirPods]: (state, action) => ({ ...state, airPods: [...action.payload] }),
- }
+  { phones: [], laptops: [], ipads: [], appleWatches: [], airPods: [] },
+  {
+    [setPhones]: (state, action) => ({ ...state, phones: [...action.payload] }),
+    [setLaptops]: (state, action) => ({ ...state, laptops: [...action.payload] }),
+    [setIpads]: (state, action) => ({ ...state, ipads: [...action.payload] }),
+    [setAppleWatches]: (state, action) => ({ ...state, appleWatches: [...action.payload] }),
+    [setAirPods]: (state, action) => ({ ...state, airPods: [...action.payload] }),
+  }
 );
 const productWithIdReducer = createReducer([],
- { [setProductWithId]: (state, action) => ({ ...action.payload }) }
+  { [setProductWithId]: (state, action) => ({ ...action.payload }) }
 );
 
 const productsErrorReducer = createReducer("", {
- [setError]: (_, action) => action.payload,
- [resetError]: () => "",
+  [setError]: (_, action) => action.payload,
+  [resetError]: () => "",
 });
 
 const productsLoaderReducer = createReducer(false, {
- [setLoader]: (state) => !state,
+  [setLoader]: (state) => !state,
 });
 
 const productsReducer = combineReducers({
- items: productItemsReducer,
- productWithId: productWithIdReducer,
- error: productsErrorReducer,
- loader: productsLoaderReducer,
+  items: productItemsReducer,
+  productWithId: productWithIdReducer,
+  error: productsErrorReducer,
+  loader: productsLoaderReducer,
 });
 
 export default productsReducer;

@@ -48,7 +48,7 @@ export const productsRoutes = [
   {
     name: "AirPods",
     path: "/pods",
-    component: "",
+    component: lazy(() => import("../Components/airPods/AirPodsList")),
     exact: true,
     isLink: true,
     icon: <AirPodsIcon />,

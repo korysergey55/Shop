@@ -1,5 +1,6 @@
 import React from "react";
 import { PhoneLi } from "./PhoneListItemStyled";
+import Notification from '../../notify'
 import { useDispatch} from "react-redux";
 import {
  useHistory,
@@ -8,7 +9,6 @@ import {
  withRouter,
 } from "react-router-dom";
 import { addToCart } from "../../../redux/cart/cartActions";
-import Notification from '../../notify'
 
 const PhoneListItem = ({ phone }) => {
  const dispatch = useDispatch();

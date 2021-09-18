@@ -1,5 +1,5 @@
 import React from "react";
-import { IpadLi} from './IpadListItemStyled'
+import { AppleWatchLi} from './AppleWatchListItemStyled'
 import Notification from "../../notify";
 
 import { useDispatch } from "react-redux";
@@ -11,46 +11,46 @@ import {
 } from "react-router-dom";
 import { addToCart } from "../../../redux/cart/cartActions";
 
-const IpadListItem = ({ ipad }) => {
+const AppleWatchListItem = ({ watch }) => {
   const dispatch = useDispatch();
   const location = useLocation();
   const history = useHistory();
   const match = useRouteMatch();
 
   const addProduct = () => {
-    dispatch(addToCart(ipad));
+    dispatch(addToCart(watch));
     Notification("addProductToCartSuccess");
   };
 
   const openDetails = () => {
     history.push({
-      pathname: `${match.path}/${ipad.id}`,
+      pathname: `${match.path}/${watch.id}`,
       state: { from: location.pathname },
     });
   };
 
   return (
-    <IpadLi >
+    <AppleWatchLi >
       <div className="content">
-        <h3 className="listItemTitle">{ipad.name}</h3>
+        <h3 className="listItemTitle">{watch.name}</h3>
         <div className="imageWrapper">
           <img
-            src={ipad.image}
-            alt={ipad.name}
+            src={watch.image}
+            alt={watch.name}
             className="listItemImage"
             onClick={openDetails}
           />
         </div>
         <p className="priceTitle">
-          {ipad.isSale ? (
+          {watch.isSale ? (
             <>
               <span className="withSalePrice">
-                {ipad.price}</span>{" "}
+                {watch.price}</span>{" "}
               <span className="withoutSalePrice">
-                {(ipad.price - ipad.price * 10).toFixed(0)}</span>
+                {(watch.price - watch.price * 10).toFixed(0)}</span>
             </>
           ) : (
-            <span className="withoutSalePrice">{ipad.price}</span>
+            <span className="withoutSalePrice">{watch.price}</span>
           )}
           {" UAH"}
         </p>
@@ -63,8 +63,8 @@ const IpadListItem = ({ ipad }) => {
           </button>
         </div>
       </div>
-    </IpadLi>
+    </AppleWatchLi>
   );
 };
 
-export default withRouter(IpadListItem);
+export default withRouter(AppleWatchListItem);

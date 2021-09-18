@@ -1,9 +1,12 @@
 import React from "react";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { AppleWatchUl } from './AppleWatchStyled';
+import AppleWatchListItem from "./appleWatchListItem/AppleWatchListItem";
 import { getAllAdvByCategoryApi } from "../../services/api";
 
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { setAppleWatches } from "../../redux/products/productsActions";
+// import { getProductsFilterSelector } from "../../redux/filter/filterSelectors";
 import { getAppleWatchesSelector } from "../../redux/products/productsSelectors";
 
 const AppleWatchList = () => {
@@ -25,12 +28,11 @@ const AppleWatchList = () => {
   }, [dispatch]);
 
   return (
-    <ul>
+    <AppleWatchUl>
       {appleWatch?.map((watch) => (
-        <p>{watch.name}</p>
-        // <WatchListItem watch={watch} />
+        <AppleWatchListItem watch={watch}  key={watch.id}/>
       ))}
-    </ul>
+    </AppleWatchUl>
   );
 };
 

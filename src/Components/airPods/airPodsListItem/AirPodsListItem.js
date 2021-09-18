@@ -1,7 +1,6 @@
 import React from "react";
-import { IpadLi} from './IpadListItemStyled'
+import { AirPodsLi} from './AirPodsListItemStyled'
 import Notification from "../../notify";
-
 import { useDispatch } from "react-redux";
 import {
   useHistory,
@@ -11,46 +10,46 @@ import {
 } from "react-router-dom";
 import { addToCart } from "../../../redux/cart/cartActions";
 
-const IpadListItem = ({ ipad }) => {
+const AirPodsListItem = ({ airPod }) => {
   const dispatch = useDispatch();
   const location = useLocation();
   const history = useHistory();
   const match = useRouteMatch();
 
   const addProduct = () => {
-    dispatch(addToCart(ipad));
+    dispatch(addToCart(airPod));
     Notification("addProductToCartSuccess");
   };
 
   const openDetails = () => {
     history.push({
-      pathname: `${match.path}/${ipad.id}`,
+      pathname: `${match.path}/${airPod.id}`,
       state: { from: location.pathname },
     });
   };
 
   return (
-    <IpadLi >
+    <AirPodsLi>
       <div className="content">
-        <h3 className="listItemTitle">{ipad.name}</h3>
+        <h3 className="listItemTitle">{airPod.name}</h3>
         <div className="imageWrapper">
           <img
-            src={ipad.image}
-            alt={ipad.name}
+            src={airPod.image}
+            alt={airPod.name}
             className="listItemImage"
             onClick={openDetails}
           />
         </div>
         <p className="priceTitle">
-          {ipad.isSale ? (
+          {airPod.isSale ? (
             <>
               <span className="withSalePrice">
-                {ipad.price}</span>{" "}
+                {airPod.price}</span>{" "}
               <span className="withoutSalePrice">
-                {(ipad.price - ipad.price * 10).toFixed(0)}</span>
+                {(airPod.price - airPod.price * 10).toFixed(0)}</span>
             </>
           ) : (
-            <span className="withoutSalePrice">{ipad.price}</span>
+            <span className="withoutSalePrice">{airPod.price}</span>
           )}
           {" UAH"}
         </p>
@@ -63,8 +62,8 @@ const IpadListItem = ({ ipad }) => {
           </button>
         </div>
       </div>
-    </IpadLi>
+    </AirPodsLi>
   );
 };
 
-export default withRouter(IpadListItem);
+export default withRouter(AirPodsListItem);

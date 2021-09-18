@@ -1,17 +1,19 @@
 import React from "react";
 import { IpadUl } from './IpadListStyled';
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import IpadListItem from './ipadList/IpadListItem'
 import { getAllAdvByCategoryApi } from "../../services/api";
 
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { setIpads } from "../../redux/products/productsActions";
-import { getIpadsSelector } from "../../redux/products/productsSelectors";
-import IpadListItem from './ipadList/IpadListItem'
+// import { getIpadsSelector, } from "../../redux/products/productsSelectors";
+import { getProductsFilterSelector } from "../../redux/filter/filterSelectors";
 
 const IpadList = () => {
   const dispatch = useDispatch();
-  const ipads = useSelector(getIpadsSelector);
-
+  const ipads = useSelector((state) =>
+    getProductsFilterSelector(state, "ipads")
+  );
   useEffect(() => {
     const getIpads = async () => {
       const response = await getAllAdvByCategoryApi("ipad");
@@ -29,7 +31,7 @@ const IpadList = () => {
   return (
     <IpadUl>
       {ipads?.map((ipad) => (
-        <IpadListItem ipad={ipad} />
+        <IpadListItem ipad={ipad} key={ipad.id} />
       ))}
     </IpadUl>
   );
