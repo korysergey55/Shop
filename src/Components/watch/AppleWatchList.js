@@ -1,4 +1,5 @@
 import React from "react";
+import { v4 as uuidv4 } from 'uuid';
 import { AppleWatchUl } from './AppleWatchStyled';
 import AppleWatchListItem from "./appleWatchListItem/AppleWatchListItem";
 import { getAllAdvByCategoryApi } from "../../services/api";
@@ -30,7 +31,7 @@ const AppleWatchList = () => {
   return (
     <AppleWatchUl>
       {appleWatch?.map((watch) => (
-        <AppleWatchListItem watch={watch}  key={watch.id}/>
+        <AppleWatchListItem watch={watch} key={uuidv4()} />
       ))}
     </AppleWatchUl>
   );

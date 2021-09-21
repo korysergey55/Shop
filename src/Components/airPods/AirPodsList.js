@@ -1,4 +1,5 @@
 import React from "react";
+import { v4 as uuidv4 } from 'uuid';
 import { AirPodsUl } from './AirPodsStyled';
 import AirPodsListItem from './airPodsListItem/AirPodsListItem';
 import { getAllAdvByCategoryApi } from "../../services/api";
@@ -29,7 +30,7 @@ const AirPodsList = () => {
   return (
     <AirPodsUl>
       {airPods?.map((airPod) => (
-        <AirPodsListItem airPod={airPod} key={airPods.id} />
+        <AirPodsListItem airPod={airPod} key={uuidv4()} />
       ))}
     </AirPodsUl>
   );

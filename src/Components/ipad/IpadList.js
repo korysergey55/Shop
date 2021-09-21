@@ -1,4 +1,5 @@
 import React from "react";
+import { v4 as uuidv4 } from 'uuid';
 import { IpadUl } from './IpadListStyled';
 import IpadListItem from './ipadList/IpadListItem'
 import { getAllAdvByCategoryApi } from "../../services/api";
@@ -31,7 +32,7 @@ const IpadList = () => {
   return (
     <IpadUl>
       {ipads?.map((ipad) => (
-        <IpadListItem ipad={ipad} key={ipad.id} />
+        <IpadListItem ipad={ipad} key={uuidv4()} />
       ))}
     </IpadUl>
   );

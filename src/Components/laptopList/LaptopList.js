@@ -1,4 +1,5 @@
 import React from "react";
+import { v4 as uuidv4 } from 'uuid';
 import { LaptopUl } from "./LaptopListStyled";
 import LaptopListItem from "./laptopListItem/LaptopListItem";
 import { getAllAdvByCategoryApi } from "../../services/api";
@@ -30,7 +31,7 @@ const LaptopList = () => {
  return (
   <LaptopUl>
    {laptops?.map((laptop) => (
-    <LaptopListItem laptop={laptop} key={laptop.id} />
+     <LaptopListItem laptop={laptop} key={uuidv4()} />
    ))}
   </LaptopUl>
  );

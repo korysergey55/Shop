@@ -1,4 +1,5 @@
 import React from "react";
+import { v4 as uuidv4 } from 'uuid';
 import { PhoneUl } from "./PhoneListStyled";
 import PhoneListItem from "./phoneListItem/PhoneListItem";
 import { getAllAdvByCategoryApi } from "../../services/api";
@@ -31,7 +32,7 @@ const PhoneList = () => {
  return (
    <PhoneUl>
    {phones?.map((phone) => (
-    <PhoneListItem phone={phone} key={phone.id} />
+     <PhoneListItem phone={phone} key={uuidv4()} />
    ))}
   </PhoneUl>
  );

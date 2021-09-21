@@ -1,18 +1,18 @@
 import styled from "styled-components";
 export const HeaderContainer = styled.header`
- height: 60px;
- padding: 0 20px;
  display: flex;
  align-items: center;
  justify-content: center;
+ height: 60px;
+ padding: 0 20px;
  border-bottom: 2px solid #819ff5;
  background-color: #424242;
 
  .navigationList {
-  padding: 0 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   padding: 0 20px;
  }
  .navigationListItem {
   margin-top: 0;
@@ -20,10 +20,11 @@ export const HeaderContainer = styled.header`
   list-style: none;
  }
  .navigationListItemAnchor {
-  text-decoration: none;
-  color: #819ff5;
-  font-weight: 700;
-  text-transform: uppercase;
+   font-weight: 700;
+   text-transform: uppercase;
+   text-decoration: none;
+   color: #819ff5;
+
   &:hover {
    color: #5f73a1;
   }
@@ -41,6 +42,7 @@ export const HeaderContainer = styled.header`
   width: 40px;
   height: 40px;
   fill: #819ff5;
+  
   &:hover {
    fill: #5f73a1;
    cursor: pointer;
