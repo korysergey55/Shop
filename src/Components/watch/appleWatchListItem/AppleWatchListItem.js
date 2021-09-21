@@ -1,5 +1,5 @@
 import React from "react";
-import { AppleWatchLi} from './AppleWatchListItemStyled'
+import { AppleWatchLi } from './AppleWatchListItemStyled'
 import Notification from "../../notify";
 
 import { useDispatch } from "react-redux";
