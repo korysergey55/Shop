@@ -5,7 +5,7 @@ import NotFoundComponent from "../Components/notFoundComponent/NotFoundComponent
 
 export const mainRoutes = [
   {
-    name: <Logo />,
+    name: "Home",
     path: "/shop",
     component: lazy(() => import("../pages/HomePage")),
     exact: true,
